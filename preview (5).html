@@ -1,0 +1,3208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>1000 Codes • 2010 ChatGPT Master Prompts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+    }
+
+    [data-theme="dark"] {
+      --bg-gradient: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
+                          radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.14) 0%, transparent 45%),
+                          radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+                          #090d16;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-sub: #64748b;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-bg-card: rgba(255, 255, 255, 0.038);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --glass-border-focus: rgba(99, 102, 241, 0.6);
+      --glass-highlight: rgba(255, 255, 255, 0.14);
+      --glass-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      --glass-shadow-hover: 0 20px 48px -6px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.22);
+      --accent: #6366f1;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 50%, #38bdf8 100%);
+      --badge-bg: rgba(99, 102, 241, 0.16);
+      --badge-text: #818cf8;
+      --menu-bg: rgba(15, 23, 42, 0.94);
+      --modal-bg: rgba(15, 23, 42, 0.92);
+      --drawer-bg: rgba(0, 0, 0, 0.25);
+      --scroll-arrow-bg: rgba(15, 23, 42, 0.75);
+      --qr-glow: rgba(99, 102, 241, 0.35);
+      --star-color: #fbbf24;
+    }
+
+    [data-theme="light"] {
+      --bg-gradient: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.1) 0%, transparent 45%),
+                          radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+                          radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, transparent 60%),
+                          #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-sub: #94a3b8;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-bg-card: rgba(255, 255, 255, 0.8);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-border-focus: rgba(99, 102, 241, 0.6);
+      --glass-highlight: rgba(255, 255, 255, 0.95);
+      --glass-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.06), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+      --glass-shadow-hover: 0 18px 36px -4px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(255, 255, 255, 1);
+      --accent: #4f46e5;
+      --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #2563eb 50%, #2563eb 100%);
+      --badge-bg: rgba(79, 70, 229, 0.1);
+      --badge-text: #4f46e5;
+      --menu-bg: rgba(255, 255, 255, 0.95);
+      --modal-bg: rgba(255, 255, 255, 0.92);
+      --drawer-bg: rgba(241, 245, 249, 0.8);
+      --scroll-arrow-bg: rgba(255, 255, 255, 0.85);
+      --qr-glow: rgba(79, 70, 229, 0.25);
+      --star-color: #f59e0b;
+    }
+
+    /* Remove mobile browser tap/focus highlight layers while keeping keyboard focus visible. */
+    button, a, input, textarea, select, summary, [role="button"] {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none;
+    }
+
+    button:focus, a:focus, input:focus, textarea:focus, select:focus, summary:focus, [role="button"]:focus {
+      outline: none;
+    }
+
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible, [role="button"]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Prevent Android/iOS touch-selection/highlight flashes on interactive UI.
+       Keyboard focus remains available through :focus-visible below. */
+    button, a, input, textarea, select, [role="button"] {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none;
+    }
+
+    button {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    button:focus:not(:focus-visible),
+    a:focus:not(:focus-visible) {
+      outline: none !important;
+      box-shadow: none;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px 0;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    header {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 16px 24px;
+      box-shadow: var(--glass-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .brand-author {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .glass-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      border-radius: var(--radius-full);
+      padding: 10px 18px;
+      font-family: var(--font-main);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition-smooth);
+      user-select: none;
+    }
+
+    .glass-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--glass-border-focus);
+      box-shadow: var(--glass-shadow-hover);
+    }
+
+    .glass-btn:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .btn-icon {
+      padding: 10px;
+      width: 44px;
+      height: 44px;
+      justify-content: center;
+    }
+
+
+    /* --- AI Short codes navigation link --- */
+    .ai-shortcodes-link {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 16px;
+      border-radius: var(--radius-full);
+      color: #f8fafc;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 52%, #4f46e5 100%);
+      border: 1px solid rgba(125, 211, 252, 0.48);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.24), inset 0 1px 1px rgba(255,255,255,0.18);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+    }
+
+    .ai-shortcodes-link::before,
+    .ai-shortcodes-link::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .ai-shortcodes-link::before {
+      border: 1.5px solid rgba(56, 189, 248, 0.72);
+      animation: aiRingPulse 2.2s ease-out infinite;
+    }
+
+    .ai-shortcodes-link::after {
+      inset: -7px;
+      border: 1px solid rgba(99, 102, 241, 0.38);
+      border-top-color: rgba(125, 211, 252, 0.9);
+      border-bottom-color: rgba(59, 130, 246, 0.1);
+      animation: aiRingSpin 3.2s linear infinite;
+    }
+
+    .ai-shortcodes-link:hover {
+      transform: translateY(-2px);
+      filter: saturate(1.08) brightness(1.05);
+      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.34), inset 0 1px 1px rgba(255,255,255,0.22);
+    }
+
+    .ai-shortcodes-link:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .ai-shortcodes-link .ai-shortcodes-spark {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #bae6fd;
+      box-shadow: 0 0 10px rgba(125, 211, 252, 0.95);
+      animation: aiSpark 1.4s ease-in-out infinite;
+      flex: 0 0 auto;
+    }
+
+    @keyframes aiRingPulse {
+      0% { opacity: 0.88; transform: scale(0.96); }
+      70% { opacity: 0; transform: scale(1.12); }
+      100% { opacity: 0; transform: scale(1.12); }
+    }
+
+    @keyframes aiRingSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes aiSpark {
+      0%, 100% { opacity: 0.7; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    @media (max-width: 640px) {
+      .header-actions { gap: 8px; }
+      .ai-shortcodes-link {
+        min-height: 38px;
+        padding: 8px 11px;
+        gap: 6px;
+        font-size: 0.72rem;
+      }
+      .ai-shortcodes-link::before { inset: -3px; }
+      .ai-shortcodes-link::after { inset: -5px; }
+      .ai-shortcodes-link .ai-shortcodes-spark { width: 6px; height: 6px; }
+      .header-actions .glass-btn.btn-icon { width: 40px; height: 40px; padding: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-shortcodes-link::before,
+      .ai-shortcodes-link::after,
+      .ai-shortcodes-link .ai-shortcodes-spark { animation: none; }
+    }
+
+    .menu-wrapper {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 250px;
+      background: var(--menu-bg);
+      backdrop-filter: blur(30px) saturate(200%);
+      -webkit-backdrop-filter: blur(30px) saturate(200%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+      padding: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 1000;
+      transform-origin: top right;
+      animation: menuPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .dropdown-menu.active {
+      display: flex;
+    }
+
+    @keyframes menuPop {
+      0% { opacity: 0; transform: scale(0.92) translateY(-8px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .menu-item {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      background: transparent;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .menu-item:hover {
+      background: rgba(99, 102, 241, 0.14);
+      color: var(--accent);
+    }
+
+    .menu-item-coffee {
+      color: #f59e0b !important;
+      font-weight: 600;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: var(--glass-border);
+      margin: 4px 0;
+    }
+
+    .control-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-box-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--glass-bg-card);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 16px 20px 16px 54px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-main);
+      font-size: 1.02rem;
+      color: var(--text-main);
+      box-shadow: var(--glass-shadow);
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), var(--glass-shadow-hover);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-sub);
+      pointer-events: none;
+      transition: var(--transition-fast);
+    }
+
+    .search-input:focus + .search-icon {
+      color: var(--accent);
+    }
+
+    .search-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .category-scroll-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .carousel-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--scroll-arrow-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition-fast);
+      opacity: 0.85;
+      user-select: none;
+    }
+
+    .carousel-nav-btn:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .carousel-nav-btn.left { left: -6px; }
+    .carousel-nav-btn.right { right: -6px; }
+
+    .filter-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 6px 36px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      width: 100%;
+    }
+
+    .filter-scroll::-webkit-scrollbar { display: none; }
+
+    .pill-chip {
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      background: var(--glass-bg-card);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition-smooth);
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .pill-chip:hover {
+      color: var(--text-main);
+      border-color: var(--glass-border-focus);
+    }
+
+    .pill-chip.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45);
+    }
+
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 18px;
+    }
+
+    .prompt-card {
+      background: var(--glass-bg-card);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-radius: var(--radius-md);
+      box-shadow: var(--glass-shadow);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prompt-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-highlight), transparent);
+    }
+
+    .prompt-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--glass-border-focus);
+      box-shadow: var(--glass-shadow-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .category-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      max-width: 70%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .category-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      min-width: 0;
+      max-width: 72%;
+    }
+
+    .category-badges .category-badge {
+      max-width: 100%;
+    }
+
+    .card-top-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prompt-number {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    .card-main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .prompt-code-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .prompt-code {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--accent);
+      word-break: break-word;
+      line-height: 1.35;
+    }
+
+    .prompt-purpose {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .action-btn:hover {
+      color: var(--text-main);
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--accent);
+    }
+
+    .action-btn.bookmarked {
+      color: var(--star-color);
+      border-color: var(--star-color);
+      background: rgba(251, 191, 36, 0.15);
+    }
+
+    .action-btn.copied {
+      background: #10b981 !important;
+      color: #ffffff !important;
+      border-color: #10b981 !important;
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-arrow.open {
+      transform: rotate(180deg);
+    }
+    .ai-tool-link { text-decoration:none; cursor:pointer; }
+    .ai-tool-link:hover { text-decoration:underline; }
+    .visit-btn { text-decoration:none; font-weight:800; font-size:1rem; }
+    .ai-tool-card .prompt-purpose { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+
+
+    .card-example-drawer {
+      display: none;
+      background: var(--drawer-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    .card-example-drawer.show { display: block; }
+
+    .example-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .example-code {
+      font-family: var(--font-mono);
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--glass-bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      color: var(--text-muted);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 10000;
+      animation: fadeInModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .modal-backdrop.active { display: flex; }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .glass-modal {
+      background: var(--modal-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(30px) saturate(190%);
+      -webkit-backdrop-filter: blur(30px) saturate(190%);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 480px;
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transform: scale(0.95);
+      animation: scaleModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes scaleModal {
+      from { transform: scale(0.92) translateY(12px); }
+      to { transform: scale(1) translateY(0); }
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.3rem;
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .close-modal-btn:hover {
+      color: var(--text-main);
+      transform: scale(1.1);
+    }
+
+    .modal-icon-badge {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-icon-badge:hover {
+      transform: scale(1.18) rotate(6deg);
+    }
+
+    .modal-icon-badge:active {
+      transform: scale(0.92);
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .modal-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .modal-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .model-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* ==========================================================================
+       PREMIUM UPI QR CODE PRESENTATION
+       ========================================================================== */
+    .qr-card-glow {
+      position: relative;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      padding: 16px;
+      margin: 10px auto 18px;
+      box-shadow: 0 16px 36px var(--qr-glow), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+
+    .qr-card-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px var(--qr-glow), inset 0 1px 3px rgba(255, 255, 255, 0.45);
+    }
+
+    .qr-badge-header {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .qr-inner-frame {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .qr-inner-frame img {
+      display: block;
+      width: 150px;
+      height: 150px;
+      border-radius: 6px;
+    }
+
+    .action-box {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .action-text {
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--accent);
+      user-select: all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .primary-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .primary-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .social-btn-instagram {
+      width: 100%;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.3);
+      transition: var(--transition-fast);
+      margin-top: 4px;
+    }
+
+    .social-btn-instagram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45);
+    }
+
+    /* --- Mini-Games HUD & Canvas --- */
+    .easter-game-view {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .arcade-canvas {
+      background: #050811;
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .game-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #818cf8;
+      padding: 0 4px;
+    }
+
+    .game-controls-hint {
+      font-size: 0.74rem;
+      color: var(--text-sub);
+      font-family: var(--font-mono);
+      line-height: 1.4;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(15, 23, 42, 0.95);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99999;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* --- Shared Retro Game Boy Controls --- */
+    .glass-modal {
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+    }
+
+    .close-modal-btn {
+      z-index: 30;
+      background: var(--modal-bg);
+      width: 36px;
+      height: 36px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .easter-game-view {
+      width: 100%;
+      min-width: 0;
+      padding-top: 42px;
+      padding-bottom: 2px;
+      gap: 12px;
+    }
+
+    .game-hud {
+      min-height: 32px;
+      padding: 0 50px 0 4px;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    .game-hud > span {
+      min-width: 0;
+    }
+
+    .game-hud > span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .game-hud > span:last-child {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .arcade-canvas {
+      max-width: 100%;
+      height: auto;
+      touch-action: none;
+    }
+
+    .game-controls-hint {
+      text-align: center;
+      width: 100%;
+      max-width: 420px;
+      padding: 0 6px;
+    }
+
+    .gameboy-controls {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none;
+      width: min(100%, 360px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 16px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #2a2f39, #171a20);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08), 0 14px 30px rgba(0, 0, 0, 0.32);
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .gameboy-control-side {
+      flex: 1 1 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .gameboy-dpad {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex: 0 0 120px;
+    }
+
+    .gameboy-pad,
+    .gameboy-round {
+      border: 0;
+      color: #e5e7eb;
+      background: linear-gradient(145deg, #303640, #16191f);
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.08), inset 0 -3px 0 rgba(0,0,0,0.28), 0 4px 10px rgba(0,0,0,0.35);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .gameboy-pad {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .gameboy-up { left: 39px; top: 0; border-radius: 12px 12px 7px 7px; }
+    .gameboy-left { left: 0; top: 39px; border-radius: 12px 7px 7px 12px; }
+    .gameboy-center { left: 39px; top: 39px; border-radius: 8px; color: #7c8492; cursor: default; }
+    .gameboy-right { right: 0; top: 39px; border-radius: 7px 12px 12px 7px; }
+    .gameboy-down { left: 39px; bottom: 0; border-radius: 7px 7px 12px 12px; }
+
+    .gameboy-ab-side {
+      gap: 14px;
+      transform: rotate(-8deg);
+    }
+
+    .gameboy-round {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      font-family: var(--font-mono);
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    .gameboy-a { background: linear-gradient(145deg, #1e40af, #172554); }
+    .gameboy-b { background: linear-gradient(145deg, #1d4ed8, #172554); }
+
+    .gameboy-pad:active,
+    .gameboy-round:active,
+    .gameboy-pad.pressed,
+    .gameboy-round.pressed {
+      transform: translateY(2px) scale(0.95);
+      box-shadow: inset 0 3px 0 rgba(0,0,0,0.28), 0 2px 5px rgba(0,0,0,0.28);
+    }
+
+    .gameboy-pad:focus-visible,
+    .gameboy-round:focus-visible {
+      outline: 2px solid #818cf8;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 640px) {
+      .easter-game-view {
+        padding-top: 44px;
+        gap: 10px;
+      }
+
+      .game-hud {
+        font-size: 0.78rem;
+        padding-right: 48px;
+      }
+
+      #snakeCanvas, #spaceCanvas {
+        width: min(78vw, 280px);
+        height: auto;
+      }
+
+      #tetrisCanvas {
+        width: min(54vw, 180px);
+        height: auto;
+      }
+
+      .gameboy-controls {
+        width: min(100%, 330px);
+        padding: 12px 10px;
+        gap: 10px;
+        border-radius: 24px;
+      }
+
+      .gameboy-dpad {
+        width: 108px;
+        height: 108px;
+        flex-basis: 108px;
+      }
+
+      .gameboy-pad {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+      }
+
+      .gameboy-up { left: 35px; }
+      .gameboy-left { top: 35px; }
+      .gameboy-center { left: 35px; top: 35px; }
+      .gameboy-right { top: 35px; }
+      .gameboy-down { left: 35px; }
+
+      .gameboy-ab-side { gap: 8px; }
+      .gameboy-round { width: 52px; height: 52px; font-size: 0.95rem; }
+    }
+
+    @media (min-width: 1024px) {
+      body { padding: 32px 36px 0; }
+      header { padding: 18px 32px; }
+      .brand-title { font-size: 1.85rem; }
+      .prompt-grid { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+      .pill-chip { padding: 9px 18px; font-size: 0.85rem; }
+      .search-input { padding: 18px 24px 18px 56px; font-size: 1.05rem; }
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 12px 10px 0; }
+      header { padding: 12px 16px; top: 8px; border-radius: var(--radius-md); }
+      .brand-title { font-size: 1.35rem; }
+      .brand-author { font-size: 0.72rem; }
+      .search-input { padding: 14px 18px 14px 46px; font-size: 0.95rem; }
+      .search-icon { left: 14px; width: 18px; height: 18px; }
+      .prompt-grid { grid-template-columns: 1fr; gap: 12px; }
+      .prompt-card { padding: 14px; }
+      .prompt-code { font-size: 0.92rem; }
+      .prompt-purpose { font-size: 0.84rem; }
+      .glass-modal { padding: 22px 16px; }
+      .carousel-nav-btn { width: 30px; height: 30px; }
+      .filter-scroll { padding: 4px 30px; }
+      .arcade-canvas { width: 280px; height: 280px; }
+    }
+
+    /* ==========================================================================
+       12. 1000 CODES FOOTER
+       ========================================================================== */
+    .site-footer {
+      width: 100%;
+      margin-top: 34px;
+      padding: 30px 30px 22px;
+      background: var(--glass-bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      box-shadow: var(--glass-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 8%;
+      right: 8%;
+      height: 1px;
+      background: var(--accent-gradient);
+      opacity: 0.8;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: minmax(240px, 1.7fr) repeat(3, minmax(130px, 1fr));
+      gap: 34px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      min-width: 0;
+    }
+
+    .footer-logo {
+      display: inline-block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 9px;
+    }
+
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.65;
+      max-width: 430px;
+    }
+
+    .footer-author {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--text-sub);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-column h3 {
+      color: var(--text-main);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      list-style: none;
+    }
+
+    .footer-links a,
+    .footer-link-button {
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 0.84rem;
+      text-decoration: none;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      transition: var(--transition-fast);
+    }
+
+    .footer-links a:hover,
+    .footer-link-button:hover {
+      color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--glass-border);
+      color: var(--text-sub);
+      font-size: 0.76rem;
+    }
+
+    .footer-bottom-left,
+    .footer-bottom-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom a {
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .footer-bottom a:hover {
+      color: var(--accent);
+    }
+
+    .footer-dot {
+      opacity: 0.45;
+    }
+
+    .footer-instagram {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 820px) {
+      .footer-main {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-footer {
+        margin-top: 24px;
+        padding: 24px 18px 18px;
+        border-radius: var(--radius-md);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 26px 18px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+
+
+    /* ==========================================================================
+       CUSTOM THEMED SCROLLBARS
+       ========================================================================== */
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --scrollbar-track: rgba(15, 23, 42, 0.20);
+      --scrollbar-thumb: linear-gradient(180deg, #6366f1 0%, #3b82f6 50%, #38bdf8 100%);
+      --scrollbar-thumb-hover: linear-gradient(180deg, #818cf8 0%, #93c5fd 50%, #60a5fa 100%);
+      --scrollbar-glow: rgba(99, 102, 241, 0.35);
+    }
+
+    [data-theme="dark"] {
+      --scrollbar-track: rgba(2, 6, 23, 0.42);
+      --scrollbar-thumb: linear-gradient(180deg, #4f46e5 0%, #7c3aed 52%, #1d4ed8 100%);
+      --scrollbar-thumb-hover: linear-gradient(180deg, #6366f1 0%, #8b5cf6 52%, #2563eb 100%);
+      --scrollbar-glow: rgba(99, 102, 241, 0.30);
+    }
+
+    [data-theme="light"] {
+      --scrollbar-track: rgba(148, 163, 184, 0.24);
+      --scrollbar-thumb: linear-gradient(180deg, #6366f1 0%, #8b5cf6 52%, #2563eb 100%);
+      --scrollbar-thumb-hover: linear-gradient(180deg, #4f46e5 0%, #7c3aed 52%, #c026d3 100%);
+      --scrollbar-glow: rgba(79, 70, 229, 0.22);
+    }
+
+    ::-webkit-scrollbar {
+      width: 11px;
+      height: 11px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 10px var(--scrollbar-glow);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+      border-width: 1px;
+      box-shadow: 0 0 14px var(--scrollbar-glow);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background: var(--accent);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: var(--scrollbar-track);
+    }
+
+    /* Category strip */
+    .filter-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    .filter-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .filter-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .filter-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      border-radius: 999px;
+      box-shadow: none;
+    }
+
+    /* Modal scrollbar */
+    .glass-modal {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--scrollbar-track);
+    }
+
+    .glass-modal::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .glass-modal::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+      border-radius: 999px;
+    }
+
+    .glass-modal::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 8px var(--scrollbar-glow);
+    }
+
+    .glass-modal::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+    }
+
+    /* Main page scrollbar — matches the glass/gradient UI */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #6366f1 0%, #3b82f6 50%, #38bdf8 100%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.35);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #818cf8 0%, #93c5fd 50%, #60a5fa 100%);
+      border-width: 1px;
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.55);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background: var(--accent);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    /* Internal scroll areas use a more subtle version */
+    .filter-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .filter-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border: 1px solid transparent;
+      box-shadow: none;
+    }
+
+    .glass-modal::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .glass-modal::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #6366f1, #3b82f6);
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Firefox internal scrolling */
+    .filter-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    .glass-modal {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    /* Clickable author links */
+    .author-instagram {
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: color 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+    }
+
+    .brand-author.author-instagram,
+    .footer-author.author-instagram {
+      color: var(--text-sub);
+    }
+
+    .author-instagram:hover {
+      color: var(--accent) !important;
+      opacity: 1;
+      filter: brightness(1.08);
+    }
+
+    .author-instagram:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <header>
+      <div class="brand-group">
+        <h1 class="brand-title" id="siteLogo" role="button" tabindex="0" title="Back to top" aria-label="1000 Codes — scroll to top">1000 Codes</h1>
+        <a class="brand-author author-instagram" href="https://www.instagram.com/akshay.s.l4?igsi=bGI2MnFrM2N5ajFj" target="_blank" rel="noopener noreferrer" aria-label="Akshay S L on Instagram">By Akshay S L</a>
+      </div>
+
+      <div class="header-actions">
+        <a class="ai-shortcodes-link" href="https://1000codes.online" aria-label="AI Short codes">
+          <span class="ai-shortcodes-spark" aria-hidden="true"></span>
+          <span>AI Short codes</span>
+        </a>
+        <div class="menu-wrapper">
+          <button class="glass-btn btn-icon" id="menuToggle" aria-label="Menu">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="5" r="2"/>
+              <circle cx="12" cy="12" r="2"/>
+              <circle cx="12" cy="19" r="2"/>
+            </svg>
+          </button>
+          
+          <div class="dropdown-menu" id="dropdownMenu">
+            <button class="menu-item" id="aboutSiteMenuBtn">
+              <span>ℹ️ About This Site</span>
+              <span>Overview</span>
+            </button>
+            <button class="menu-item" id="contactUsMenuBtn">
+              <span>✉️ Contact Us</span>
+              <span>Reach Out</span>
+            </button>
+            <button class="menu-item menu-item-coffee" id="buyCoffeeMenuBtn">
+              <span>☕ Buy Me a Coffee</span>
+              <span>UPI</span>
+            </button>
+            <div class="menu-divider"></div>
+            <button class="menu-item" id="themeToggleBtn">
+              <span>Theme</span>
+              <span id="themeStateLabel">Light Mode</span>
+            </button>
+            <button class="menu-item" id="showAllMenuBtn">
+              <span>View Mode</span>
+              <span>All <span id="allCodesLabel">1000+</span> AI Tools</span>
+            </button>
+            <button class="menu-item" id="exportAllJsonBtn">
+              <span>Export</span>
+              <span>All Prompts (.json)</span>
+            </button>
+            <button class="menu-item" id="exportBookmarksJsonBtn">
+              <span>Export</span>
+              <span>Bookmarks (.json)</span>
+            </button>
+            <button class="menu-item" id="importBookmarksBtn">
+              <span>Import Bookmarks</span>
+              <span>📂</span>
+            </button>
+            <div class="menu-divider"></div>
+            <button class="menu-item" id="resetFiltersBtn">
+              <span>Reset Filters</span>
+              <span>↺</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <input type="file" id="importFileInput" accept=".json" style="display: none;" />
+
+    <section class="control-panel">
+      <div class="search-box-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search AI tools, categories, purposes, or names..." autocomplete="off" />
+        <svg class="search-icon" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+
+      <div class="search-meta">
+        <span id="resultCount">Loading AI tools...</span>
+        <span id="activeFilterBadge">Category: All</span>
+      </div>
+
+      <div class="search-meta" style="font-size:.72rem;opacity:.8;">
+        <span id="directoryStatus">Preparing AI directory…</span>
+        <span>Click an AI name to open it • ▼ reveals purpose</span>
+      </div>
+
+      <div class="category-scroll-container">
+        <button class="carousel-nav-btn left" id="scrollLeftBtn" title="Scroll Left" aria-label="Scroll Left">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="filter-scroll" id="categoryChips"></div>
+
+        <button class="carousel-nav-btn right" id="scrollRightBtn" title="Scroll Right" aria-label="Scroll Right">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <main class="prompt-grid" id="promptGrid"></main>
+
+
+    <!-- 1000 Codes Footer -->
+    <footer class="site-footer" aria-label="1000 Codes footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-logo">1000 Codes</div>
+          <p class="footer-tagline">
+            A searchable directory of real AI tools, organized by category and purpose, with direct links to their official websites.
+          </p>
+          <a class="footer-author author-instagram" href="https://www.instagram.com/akshay.s.l4?igsi=bGI2MnFrM2N5ajFj" target="_blank" rel="noopener noreferrer" aria-label="Akshay S L on Instagram">By Akshay S L</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul class="footer-links">
+            <li><a href="#" id="footerAllCodes">All Codes</a></li>
+            <li><a href="#top" id="footerTop">Back to Top</a></li>
+            <li><button class="footer-link-button" id="footerReset">Reset Filters</button></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><button class="footer-link-button" id="footerAbout">About 1000 Codes</button></li>
+            <li><button class="footer-link-button" id="footerContact">Contact Us</button></li>
+            <li><button class="footer-link-button" id="footerCoffee">Buy Me a Coffee</button></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Connect</h3>
+          <ul class="footer-links">
+            <li>
+              <a class="footer-instagram" href="https://www.instagram.com/1000codes.online" target="_blank" rel="noopener noreferrer">
+                <span>◎</span> Instagram
+              </a>
+            </li>
+            <li><a href="https://1000codes.online" target="_blank" rel="noopener noreferrer">AI Short codes</a></li>
+            <li><a href="https://slakshaydp.github.io/-tools/" target="_blank" rel="noopener noreferrer">&tools Beta</a></li>
+            <li><a href="mailto:akshaysldpoffical@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <span>© <span id="footerYear">2026</span> 1000 Codes</span>
+          <span class="footer-dot">•</span>
+          <span>Free to use</span>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="#" id="footerAboutBottom">About</a>
+          <span class="footer-dot">•</span>
+          <a href="#" id="footerContactBottom">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- 1. About Modal (Snake) -->
+  <div class="modal-backdrop" id="aboutModal">
+    <div class="glass-modal">
+      <button class="close-modal-btn modal-close" aria-label="Close">&times;</button>
+      
+      <div id="aboutModalContent">
+        <div class="modal-icon-badge" id="eggSnakeTrigger" title="Secret Easter Egg">✨</div>
+        <h2 class="modal-title">About 1000 Codes</h2>
+        <div class="modal-pill-list">
+          <span class="model-badge">ChatGPT</span>
+          <span class="model-badge">Claude</span>
+          <span class="model-badge">Gemini</span>
+          <span class="model-badge">Meta AI</span>
+          <span class="model-badge">Perplexity</span>
+        </div>
+        <p class="modal-desc">
+          <strong>1000 Codes</strong> is a curated AI discovery directory built to help creators, developers, researchers, students, and everyday users find real AI tools quickly.
+          <br/><br/>
+          Each listing includes the tool name, category, purpose, pricing label, and official website. Listings marked dead by the source are excluded.
+        </p>
+        <button class="primary-btn modal-close" style="width: 100%; justify-content: center;">Got It</button>
+      </div>
+
+      <div class="easter-game-view" id="snakeGameView">
+        <div class="game-hud">
+          <span>🎮 CYBER SNAKE</span>
+          <span>SCORE: <span id="snakeScore">0</span></span>
+        </div>
+        <canvas class="arcade-canvas" id="snakeCanvas" width="300" height="300"></canvas>
+        <div class="game-controls-hint">Keyboard: Arrow Keys / WASD • A: Pause • B: Restart</div>
+        <div class="gameboy-controls" data-game-controls="snake" aria-label="Cyber Snake controls">
+          <div class="gameboy-control-side">
+            <div class="gameboy-dpad" aria-label="Directional pad">
+              <button type="button" class="gameboy-pad gameboy-up" data-game-action="up" aria-label="Up">▲</button>
+              <button type="button" class="gameboy-pad gameboy-left" data-game-action="left" aria-label="Left">◀</button>
+              <span class="gameboy-pad gameboy-center" aria-hidden="true">●</span>
+              <button type="button" class="gameboy-pad gameboy-right" data-game-action="right" aria-label="Right">▶</button>
+              <button type="button" class="gameboy-pad gameboy-down" data-game-action="down" aria-label="Down">▼</button>
+            </div>
+          </div>
+          <div class="gameboy-control-side gameboy-ab-side">
+            <button type="button" class="gameboy-round gameboy-b" data-game-action="b" aria-label="Restart">B</button>
+            <button type="button" class="gameboy-round gameboy-a" data-game-action="a" aria-label="Pause">A</button>
+          </div>
+        </div>
+        <button class="primary-btn" id="exitSnakeBtn" style="width: 100%; justify-content: center; margin-top: 6px;">Return to Modal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Contact Modal (Space Defender) -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="glass-modal">
+      <button class="close-modal-btn modal-close" aria-label="Close">&times;</button>
+
+      <div id="contactModalContent">
+        <div class="modal-icon-badge" id="eggSpaceTrigger" title="Secret Easter Egg">📬</div>
+        <h2 class="modal-title">Get In Touch</h2>
+        <p class="modal-desc" style="text-align: center; margin-bottom: 16px;">
+          Have suggestions, prompt contributions, or feedback to elevate this platform? We'd love to hear from you.
+        </p>
+
+        <div class="action-box">
+          <span class="action-text" id="emailText">akshaysldpoffical@gmail.com</span>
+          <button class="primary-btn" id="copyEmailBtn">Copy Email</button>
+        </div>
+
+        <a class="social-btn-instagram" href="https://www.instagram.com/1000codes.online?igsh=MWprdjdrdGE0dmZzaA==&igsi=MWprdjdrdGE0dmZzaA==" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Follow on Instagram
+        </a>
+      </div>
+
+      <div class="easter-game-view" id="spaceGameView">
+        <div class="game-hud">
+          <span>🚀 SPACE DEFENDER (FAST)</span>
+          <span>SCORE: <span id="spaceScore">0</span></span>
+        </div>
+        <canvas class="arcade-canvas" id="spaceCanvas" width="300" height="300"></canvas>
+        <div class="game-controls-hint">Keyboard: Arrow Keys / WASD • A: Shoot • B: Restart • Enter/Space: Shoot</div>
+        <div class="gameboy-controls" data-game-controls="space" aria-label="Space Defender controls">
+          <div class="gameboy-control-side">
+            <div class="gameboy-dpad" aria-label="Directional pad">
+              <button type="button" class="gameboy-pad gameboy-up" data-game-action="up" aria-label="Up">▲</button>
+              <button type="button" class="gameboy-pad gameboy-left" data-game-action="left" aria-label="Left">◀</button>
+              <span class="gameboy-pad gameboy-center" aria-hidden="true">●</span>
+              <button type="button" class="gameboy-pad gameboy-right" data-game-action="right" aria-label="Right">▶</button>
+              <button type="button" class="gameboy-pad gameboy-down" data-game-action="down" aria-label="Down">▼</button>
+            </div>
+          </div>
+          <div class="gameboy-control-side gameboy-ab-side">
+            <button type="button" class="gameboy-round gameboy-b" data-game-action="b" aria-label="Restart">B</button>
+            <button type="button" class="gameboy-round gameboy-a" data-game-action="a" aria-label="Shoot">A</button>
+          </div>
+        </div>
+        <button class="primary-btn" id="exitSpaceBtn" style="width: 100%; justify-content: center; margin-top: 6px;">Return to Modal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Coffee Modal (Tetris + Upgraded UPI QR Code) -->
+  <div class="modal-backdrop" id="coffeeModal">
+    <div class="glass-modal">
+      <button class="close-modal-btn modal-close" aria-label="Close">&times;</button>
+      
+      <div id="coffeeModalContent">
+        <div class="modal-icon-badge" id="eggTetrisTrigger" title="Secret Easter Egg">☕</div>
+        <h2 class="modal-title">Support 1000 Codes</h2>
+        <p class="modal-desc" style="text-align: center;">
+          Your gracious patronage fuels the independent maintenance, constant expansion, and completely ad-free experience of this resource for global creators and learners.
+        </p>
+
+        <!-- Upgraded UPI QR Code Container -->
+        <div class="qr-card-glow">
+          <div class="qr-badge-header">
+            <span>⚡ SCAN & PAY VIA UPI</span>
+          </div>
+          <div class="qr-inner-frame">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi%3A%2F%2Fpay%3Fpa%3Dakshaysldp%40slc%26pn%3DAkshay%2520S%2520L%26cu%3DINR" alt="UPI Payment QR Code" />
+          </div>
+        </div>
+
+        <div class="action-box">
+          <span class="action-text" id="upiIdText">akshaysldp@slc</span>
+          <button class="primary-btn" id="copyUpiBtn">Copy UPI</button>
+        </div>
+      </div>
+
+      <div class="easter-game-view" id="tetrisGameView">
+        <div class="game-hud">
+          <span>☕ COFFEE TETRIS</span>
+          <span>LINES: <span id="tetrisScore">0</span></span>
+        </div>
+        <canvas class="arcade-canvas" id="tetrisCanvas" width="200" height="320"></canvas>
+        <div class="game-controls-hint">Keyboard: A/D or ←/→: Move • W/↑: Rotate • S/↓: Drop • A button: Rotate • B button: Hard Drop</div>
+        <div class="gameboy-controls" data-game-controls="tetris" aria-label="Coffee Tetris controls">
+          <div class="gameboy-control-side">
+            <div class="gameboy-dpad" aria-label="Directional pad">
+              <button type="button" class="gameboy-pad gameboy-up" data-game-action="up" aria-label="Rotate">▲</button>
+              <button type="button" class="gameboy-pad gameboy-left" data-game-action="left" aria-label="Left">◀</button>
+              <span class="gameboy-pad gameboy-center" aria-hidden="true">●</span>
+              <button type="button" class="gameboy-pad gameboy-right" data-game-action="right" aria-label="Right">▶</button>
+              <button type="button" class="gameboy-pad gameboy-down" data-game-action="down" aria-label="Soft Drop">▼</button>
+            </div>
+          </div>
+          <div class="gameboy-control-side gameboy-ab-side">
+            <button type="button" class="gameboy-round gameboy-b" data-game-action="b" aria-label="Hard Drop">B</button>
+            <button type="button" class="gameboy-round gameboy-a" data-game-action="a" aria-label="Rotate">A</button>
+          </div>
+        </div>
+        <button class="primary-btn" id="exitTetrisBtn" style="width: 100%; justify-content: center; margin-top: 6px;">Return to Modal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script>
+    const BOOKMARKS_STORAGE_KEY = "1000_codes_bookmarks_v1";
+    const THEME_STORAGE_KEY = "1000_codes_theme_v1";
+
+    // 1000 Codes Master Prompt Data
+    const AI_DIRECTORY_URL = "https://bestaihub.cc/index.json";
+    const FALLBACK_TOOLS = [
+      ["ChatGPT","Chatbots","AI assistant for writing, coding, analysis, research, and general tasks.","https://chatgpt.com","Freemium"],
+      ["Claude","Chatbots","AI assistant for reasoning, writing, analysis, and long-context work.","https://claude.ai","Freemium"],
+      ["Gemini","Chatbots","Google AI assistant for text, reasoning, multimodal tasks, and research.","https://gemini.google.com","Freemium"],
+      ["Perplexity","Search Engines","AI answer engine for web research with cited sources.","https://www.perplexity.ai","Freemium"],
+      ["Microsoft Copilot","Chatbots","AI assistant integrated across Microsoft's products and services.","https://copilot.microsoft.com","Freemium"],
+      ["GitHub Copilot","Code Assistant","AI coding assistant for code completion, chat, and development workflows.","https://github.com/features/copilot","Paid"],
+      ["Cursor","Code Assistant","AI-first code editor for understanding and modifying codebases.","https://cursor.com","Freemium"],
+      ["Canva","Graphic Design","AI-assisted design platform for graphics, presentations, video, and marketing.","https://www.canva.com","Freemium"],
+      ["Runway","Video Generator","AI creative suite for generating and editing video.","https://runwayml.com","Freemium"],
+      ["ElevenLabs","Text to Speech","AI voice generation and speech synthesis.","https://elevenlabs.io","Freemium"],
+      ["Midjourney","Image Generators","AI image generation from natural-language prompts.","https://www.midjourney.com","Paid"],
+      ["Leonardo AI","Image Generators","AI image generation and creative asset production.","https://leonardo.ai","Freemium"],
+      ["Suno","Music Generation","AI music generation from text descriptions and creative prompts.","https://suno.com","Freemium"],
+      ["Gamma","Presentation","AI tool for creating presentations, documents, and webpages.","https://gamma.app","Freemium"],
+      ["Notion AI","Productivity","AI assistance for drafting, summarizing, searching, and organizing workspace content.","https://www.notion.com/product/ai","Paid"],
+      ["Jasper","Writing Assistants","AI content platform for marketing teams and brand-aware content creation.","https://www.jasper.ai","Paid"],
+      ["Grammarly","Writing Assistants","AI writing assistant for grammar, clarity, tone, and rewriting.","https://www.grammarly.com","Freemium"],
+      ["Zapier","Automation","Automation platform with AI-powered workflows and agents.","https://zapier.com","Freemium"],
+      ["Otter.ai","Meeting Assistants","AI meeting transcription, notes, summaries, and conversation search.","https://otter.ai","Freemium"],
+      ["Descript","Video Editor","AI-powered audio and video editing through text-based editing.","https://www.descript.com","Freemium"]
+    ];
+    let promptDefs = FALLBACK_TOOLS.map((t,i)=>[i+1,t[1],t[0],t[2],t[3],t[4]]);
+    let directoryLoaded = false;
+    let aiDirectorySource = "Fallback seed";
+
+    async function loadAiDirectory() {
+      try {
+        const r = await fetch(AI_DIRECTORY_URL, {cache:"no-store"});
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        const data = await r.json();
+        const seen = new Set();
+        const tools = data.filter(t => t && t.type === "tool" && t.name && t.website && t.dead !== true).filter(t => {
+          const k = String(t.name).toLowerCase()+"|"+String(t.website).toLowerCase();
+          if (seen.has(k)) return false; seen.add(k); return true;
+        });
+        if (tools.length < 1000) throw new Error("Fewer than 1000 live-listed tools returned");
+        promptDefs = tools.map((t,i)=>[i+1,String(t.category||"Other"),String(t.name),String(t.description||t.subtitle||"AI-powered tool."),String(t.website),String(t.price||"See website")]);
+        directoryLoaded = true;
+        aiDirectorySource = "Best of AI index • entries not marked dead";
+        rebuildDirectory();
+      } catch(e) {
+        console.warn("AI directory load failed", e);
+        rebuildDirectory();
+      }
+    }
+
+    let TOTAL_CODES = 0;
+    let rawData = [];
+    function rebuildDirectory() {
+      TOTAL_CODES = promptDefs.length;
+      rawData = promptDefs.map((d,i)=>({id:i+1,cat:[String(d[1])],p:String(d[2]),desc:String(d[3]),url:String(d[4]),price:String(d[5]||"See website"),ex:String(d[3])}));
+      if (typeof categories !== "undefined") {
+        categories.length = 0; categories.push("ALL","BOOKMARKS",...new Set(rawData.flatMap(x=>x.cat)));
+        renderCategoryChips(); filterAndRender(); updateDirectoryStatus();
+      }
+    }
+
+    let selectedCategory = "ALL";
+    let searchQuery = "";
+    let bookmarks = new Set(JSON.parse(localStorage.getItem(BOOKMARKS_STORAGE_KEY) || "[]"));
+
+    const grid = document.getElementById("promptGrid");
+    const chipsContainer = document.getElementById("categoryChips");
+    const scrollLeftBtn = document.getElementById("scrollLeftBtn");
+    const scrollRightBtn = document.getElementById("scrollRightBtn");
+    const searchInput = document.getElementById("searchInput");
+    const resultCount = document.getElementById("resultCount");
+    const activeFilterBadge = document.getElementById("activeFilterBadge");
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeStateLabel = document.getElementById("themeStateLabel");
+    const showAllMenuBtn = document.getElementById("showAllMenuBtn");
+    const exportAllJsonBtn = document.getElementById("exportAllJsonBtn");
+    const exportBookmarksJsonBtn = document.getElementById("exportBookmarksJsonBtn");
+    const importBookmarksBtn = document.getElementById("importBookmarksBtn");
+    const importFileInput = document.getElementById("importFileInput");
+    const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+    const buyCoffeeMenuBtn = document.getElementById("buyCoffeeMenuBtn");
+    const aboutSiteMenuBtn = document.getElementById("aboutSiteMenuBtn");
+    const contactUsMenuBtn = document.getElementById("contactUsMenuBtn");
+    const coffeeModal = document.getElementById("coffeeModal");
+    const aboutModal = document.getElementById("aboutModal");
+    const contactModal = document.getElementById("contactModal");
+    const copyUpiBtn = document.getElementById("copyUpiBtn");
+    const copyEmailBtn = document.getElementById("copyEmailBtn");
+    const toast = document.getElementById("toast");
+    const allCodesLabel = document.getElementById("allCodesLabel");
+    if (allCodesLabel) allCodesLabel.textContent = TOTAL_CODES;
+    resultCount.textContent = `Showing ${TOTAL_CODES} AI tools`;
+
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || "dark";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+    themeStateLabel.textContent = savedTheme === "dark" ? "Light Mode" : "Dark Mode";
+
+    const categories = ["ALL", "BOOKMARKS", ...new Set(rawData.flatMap(item => item.cat))];
+
+    function renderCategoryChips() {
+      chipsContainer.innerHTML = categories.map(cat => {
+        let label = cat;
+        if (cat === "ALL") label = `✨ All ${TOTAL_CODES} AI Tools`;
+        else if (cat === "BOOKMARKS") label = `⭐ Bookmarked (${bookmarks.size})`;
+        else label = cat.replace(/^\d+\.\s*/, '');
+        
+        const isActive = cat === selectedCategory ? "active" : "";
+        return `<button class="pill-chip ${isActive}" data-cat="${cat}">${label}</button>`;
+      }).join("");
+
+      document.querySelectorAll(".pill-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          selectedCategory = chip.dataset.cat;
+          document.querySelectorAll(".pill-chip").forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          filterAndRender();
+        });
+      });
+    }
+
+    chipsContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      chipsContainer.scrollBy({
+        left: evt.deltaY < 0 ? -240 : 240,
+        behavior: "smooth"
+      });
+    }, { passive: false });
+
+    scrollLeftBtn.addEventListener("click", () => {
+      chipsContainer.scrollBy({ left: -320, behavior: "smooth" });
+    });
+
+    scrollRightBtn.addEventListener("click", () => {
+      chipsContainer.scrollBy({ left: 320, behavior: "smooth" });
+    });
+
+    function renderCards(items) {
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3 style="margin-bottom: 8px; font-weight:700;">No AI tools found</h3>
+            <p>${selectedCategory === "BOOKMARKS" ? "You haven't bookmarked any prompts yet. Tap the star icon on any card to save it." : "Try another AI name, category, purpose, or keyword."}</p>
+          </div>
+        `;
+        resultCount.textContent = "0 AI tools found";
+        return;
+      }
+
+      grid.innerHTML = items.map(item => {
+        const isBookmarked = bookmarks.has(item.id);
+        return `
+        <article class="prompt-card ai-tool-card" data-id="${item.id}">
+          <div class="card-top">
+            <div class="category-badges">${item.cat.map(cat => `<span class="category-badge">${escapeHtml(cat.replace(/^\d+\.\s*/, ""))}</span>`).join("")}</div>
+            <div class="card-top-right">
+              <button class="action-btn bookmark-btn ${isBookmarked ? 'bookmarked' : ''}" data-id="${item.id}" title="${isBookmarked ? 'Remove Bookmark' : 'Bookmark AI Tool'}" aria-label="Bookmark">
+                <svg width="15" height="15" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </button>
+              <span class="prompt-number">#${item.id}</span>
+            </div>
+          </div>
+          
+          <div class="card-main">
+            <div class="prompt-code-box">
+              <a class="prompt-code ai-tool-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.p)} ↗</a>
+              <div class="prompt-purpose">${escapeHtml(item.desc)}</div>
+            </div>
+            <div class="card-actions">
+              <button class="action-btn toggle-details-btn" title="Reveal Purpose" aria-label="Reveal Purpose">
+                <svg class="dropdown-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <a class="action-btn visit-btn" title="Open AI website" aria-label="Open AI website" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">↗</a>
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-example-drawer">
+            <div class="example-title">PURPOSE • ${escapeHtml(item.price)}</div>
+            <div class="example-code">${escapeHtml(item.desc)}</div>
+            <div style="margin-top:8px;font-size:.75rem;color:var(--text-sub);word-break:break-all;">${escapeHtml(item.url)}</div>
+          </div>
+        </article>
+      `}).join("");
+
+      resultCount.textContent = `Showing ${items.length} AI tool${items.length === 1 ? '' : 's'}`;
+      if (selectedCategory === "ALL") activeFilterBadge.textContent = "Category: All";
+      else if (selectedCategory === "BOOKMARKS") activeFilterBadge.textContent = "Viewing: Bookmarks";
+      else activeFilterBadge.textContent = `Category: ${selectedCategory.replace(/^\d+\.\s*/, '')}`;
+
+      attachCardListeners();
+    }
+
+    function attachCardListeners() {
+      document.querySelectorAll(".toggle-details-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const card = btn.closest(".prompt-card");
+          const drawer = card.querySelector(".card-example-drawer");
+          const arrow = btn.querySelector(".dropdown-arrow");
+          drawer.classList.toggle("show");
+          arrow.classList.toggle("open");
+        });
+      });
+      document.querySelectorAll(".bookmark-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = parseInt(btn.getAttribute("data-id"), 10);
+          if (bookmarks.has(id)) {
+            bookmarks.delete(id);
+            showToast("Removed from bookmarks");
+          } else {
+            bookmarks.add(id);
+            showToast("Saved to bookmarks ⭐");
+          }
+          localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify([...bookmarks]));
+          renderCategoryChips();
+          filterAndRender();
+        });
+      });
+    }
+
+    function filterAndRender() {
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = rawData.filter(item => {
+        let matchesCategory = false;
+        if (selectedCategory === "ALL") {
+          matchesCategory = true;
+        } else if (selectedCategory === "BOOKMARKS") {
+          matchesCategory = bookmarks.has(item.id);
+        } else {
+          matchesCategory = item.cat.includes(selectedCategory);
+        }
+
+        const categoryText = item.cat.join(" ").toLowerCase();
+        const matchesSearch = !q || (
+          item.p.toLowerCase().includes(q) ||
+          item.desc.toLowerCase().includes(q) ||
+          item.ex.toLowerCase().includes(q) ||
+          categoryText.includes(q)
+        );
+        return matchesCategory && matchesSearch;
+      });
+      renderCards(filtered);
+    }
+
+    function downloadJson(data, filename) {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Exported ${filename}`);
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      clearTimeout(toastTimeout);
+      toast.textContent = msg;
+      toast.classList.add("show");
+      toastTimeout = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+      );
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      filterAndRender();
+    });
+
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdownMenu.contains(e.target) && e.target !== menuToggle) {
+        dropdownMenu.classList.remove("active");
+      }
+    });
+
+    function setupModal(triggerBtn, modalEl, onOpenCleanup) {
+      triggerBtn.addEventListener("click", () => {
+        dropdownMenu.classList.remove("active");
+        if (onOpenCleanup) onOpenCleanup();
+        modalEl.classList.add("active");
+      });
+
+      modalEl.querySelectorAll(".modal-close").forEach(btn => {
+        btn.addEventListener("click", () => {
+          modalEl.classList.remove("active");
+          stopAllArcadeGames();
+        });
+      });
+
+      modalEl.addEventListener("click", (e) => {
+        if (e.target === modalEl) {
+          modalEl.classList.remove("active");
+          stopAllArcadeGames();
+        }
+      });
+    }
+
+    setupModal(aboutSiteMenuBtn, aboutModal, resetSnakeView);
+    setupModal(contactUsMenuBtn, contactModal, resetSpaceView);
+    setupModal(buyCoffeeMenuBtn, coffeeModal, resetTetrisView);
+
+    copyUpiBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("akshaysldp@slc");
+        showToast("UPI ID Copied: akshaysldp@slc");
+      } catch (err) {
+        console.error("Failed to copy UPI", err);
+      }
+    });
+
+    copyEmailBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("akshaysldpoffical@gmail.com");
+        showToast("Email Copied to clipboard!");
+      } catch (err) {
+        console.error("Failed to copy Email", err);
+      }
+    });
+
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+      themeStateLabel.textContent = nextTheme === "dark" ? "Light Mode" : "Dark Mode";
+      dropdownMenu.classList.remove("active");
+    });
+
+    showAllMenuBtn.addEventListener("click", () => {
+      selectedCategory = "ALL";
+      searchQuery = "";
+      searchInput.value = "";
+      renderCategoryChips();
+      filterAndRender();
+      dropdownMenu.classList.remove("active");
+    });
+
+    exportAllJsonBtn.addEventListener("click", () => {
+      downloadJson(rawData, "1000plus_ai_tools_directory.json");
+      dropdownMenu.classList.remove("active");
+    });
+
+    exportBookmarksJsonBtn.addEventListener("click", () => {
+      const bookmarkedData = rawData.filter(item => bookmarks.has(item.id));
+      if (bookmarkedData.length === 0) {
+        showToast("No bookmarks to export");
+      } else {
+        downloadJson(bookmarkedData, "my_bookmarked_prompts.json");
+      }
+      dropdownMenu.classList.remove("active");
+    });
+
+    importBookmarksBtn.addEventListener("click", () => {
+      dropdownMenu.classList.remove("active");
+      importFileInput.click();
+    });
+
+    importFileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const imported = JSON.parse(event.target.result);
+          if (Array.isArray(imported)) {
+            let addedCount = 0;
+            imported.forEach(item => {
+              if (item.id && rawData.some(r => r.id === item.id)) {
+                bookmarks.add(item.id);
+                addedCount++;
+              }
+            });
+            localStorage.setItem(BOOKMARKS_STORAGE_KEY, JSON.stringify([...bookmarks]));
+            renderCategoryChips();
+            filterAndRender();
+            showToast(`Imported ${addedCount} bookmarks! ⭐`);
+          } else {
+            showToast("Invalid JSON bookmark file");
+          }
+        } catch (err) {
+          showToast("Failed to read JSON file");
+        }
+      };
+      reader.readAsText(file);
+      importFileInput.value = "";
+    });
+
+    resetFiltersBtn.addEventListener("click", () => {
+      selectedCategory = "ALL";
+      searchQuery = "";
+      searchInput.value = "";
+      renderCategoryChips();
+      filterAndRender();
+      dropdownMenu.classList.remove("active");
+      showToast("Filters reset");
+    });
+
+    /* ==========================================================================
+       ARCADE ENGINES (SNAKE, HIGH-SPEED SPACE SHOOTER, TETRIS)
+       ========================================================================== */
+    let activeGame = null;
+
+    function stopAllArcadeGames() {
+      if (snakeInterval) clearInterval(snakeInterval);
+      if (spaceAnimationId) cancelAnimationFrame(spaceAnimationId);
+      if (tetrisInterval) clearInterval(tetrisInterval);
+      activeGame = null;
+    }
+
+    // --- 1. Cyber Snake ---
+    let snakeClickCount = 0;
+    let snakeInterval = null;
+    const eggSnakeTrigger = document.getElementById("eggSnakeTrigger");
+    const aboutModalContent = document.getElementById("aboutModalContent");
+    const snakeGameView = document.getElementById("snakeGameView");
+    const snakeCanvas = document.getElementById("snakeCanvas");
+    const snakeCtx = snakeCanvas.getContext("2d");
+    const snakeScoreEl = document.getElementById("snakeScore");
+    const exitSnakeBtn = document.getElementById("exitSnakeBtn");
+
+    function resetSnakeView() {
+      snakeClickCount = 0;
+      aboutModalContent.style.display = "block";
+      snakeGameView.style.display = "none";
+      stopAllArcadeGames();
+    }
+
+    eggSnakeTrigger.addEventListener("click", () => {
+      snakeClickCount++;
+      if (snakeClickCount >= 3) {
+        showToast("🎮 Secret Cyber Snake Unlocked!");
+        aboutModalContent.style.display = "none";
+        snakeGameView.style.display = "flex";
+        startSnakeGame();
+      }
+    });
+
+    exitSnakeBtn.addEventListener("click", resetSnakeView);
+
+    let snake = [], snakeFood = {}, snakeDx = 15, snakeDy = 0, snakeScore = 0;
+    function startSnakeGame() {
+      stopAllArcadeGames();
+      activeGame = "snake";
+      snake = [{x: 150, y: 150}, {x: 135, y: 150}, {x: 120, y: 150}];
+      snakeDx = 15; snakeDy = 0; snakeScore = 0;
+      snakePaused = false;
+      snakeScoreEl.textContent = snakeScore;
+      spawnSnakeFood();
+      snakeInterval = setInterval(updateSnakeGame, 100);
+    }
+
+    function spawnSnakeFood() {
+      snakeFood = {
+        x: Math.floor(Math.random() * (snakeCanvas.width / 15)) * 15,
+        y: Math.floor(Math.random() * (snakeCanvas.height / 15)) * 15
+      };
+    }
+
+    function updateSnakeGame() {
+      if (snakePaused) return;
+      const head = {x: snake[0].x + snakeDx, y: snake[0].y + snakeDy};
+
+      if (head.x < 0 || head.x >= snakeCanvas.width || head.y < 0 || head.y >= snakeCanvas.height ||
+          snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        clearInterval(snakeInterval);
+        showToast(`Game Over! Score: ${snakeScore}`);
+        setTimeout(startSnakeGame, 1400);
+        return;
+      }
+
+      snake.unshift(head);
+      if (head.x === snakeFood.x && head.y === snakeFood.y) {
+        snakeScore += 10;
+        snakeScoreEl.textContent = snakeScore;
+        spawnSnakeFood();
+      } else {
+        snake.pop();
+      }
+
+      snakeCtx.fillStyle = "#050811";
+      snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+
+      snakeCtx.fillStyle = "#38bdf8";
+      snakeCtx.shadowColor = "#38bdf8";
+      snakeCtx.shadowBlur = 10;
+      snakeCtx.fillRect(snakeFood.x + 1, snakeFood.y + 1, 13, 13);
+      snakeCtx.shadowBlur = 0;
+
+      snake.forEach((segment, index) => {
+        snakeCtx.fillStyle = index === 0 ? "#6366f1" : "#818cf8";
+        snakeCtx.fillRect(segment.x + 1, segment.y + 1, 13, 13);
+      });
+    }
+
+    // --- 2. High-Speed Space Defender ---
+    let spaceClickCount = 0;
+    let spaceAnimationId = null;
+    const eggSpaceTrigger = document.getElementById("eggSpaceTrigger");
+    const contactModalContent = document.getElementById("contactModalContent");
+    const spaceGameView = document.getElementById("spaceGameView");
+    const spaceCanvas = document.getElementById("spaceCanvas");
+    const spaceCtx = spaceCanvas.getContext("2d");
+    const spaceScoreEl = document.getElementById("spaceScore");
+    const exitSpaceBtn = document.getElementById("exitSpaceBtn");
+
+    function resetSpaceView() {
+      spaceClickCount = 0;
+      contactModalContent.style.display = "block";
+      spaceGameView.style.display = "none";
+      stopAllArcadeGames();
+    }
+
+    eggSpaceTrigger.addEventListener("click", () => {
+      spaceClickCount++;
+      if (spaceClickCount >= 3) {
+        showToast("🚀 Secret High-Speed Space Defender Unlocked!");
+        contactModalContent.style.display = "none";
+        spaceGameView.style.display = "flex";
+        startSpaceGame();
+      }
+    });
+
+    exitSpaceBtn.addEventListener("click", resetSpaceView);
+
+    // Boosted speeds for thrilling action
+    let ship = {x: 140, y: 260, w: 20, h: 20, speed: 10};
+    let bullets = [], enemies = [], spaceScore = 0, spaceSpawnTimer = 0;
+
+    function startSpaceGame() {
+      stopAllArcadeGames();
+      activeGame = "space";
+      ship.x = 140; ship.y = 260;
+      bullets = []; enemies = []; spaceScore = 0; spaceSpawnTimer = 0;
+      spaceScoreEl.textContent = spaceScore;
+      updateSpaceGame();
+    }
+
+    function updateSpaceGame() {
+      spaceSpawnTimer++;
+      if (spaceSpawnTimer % 24 === 0) { // faster spawn rate
+        enemies.push({
+          x: Math.random() * (spaceCanvas.width - 24),
+          y: -20,
+          w: 20,
+          h: 20,
+          speed: 2.8 + Math.random() * 2.5 // increased asteroid speed
+        });
+      }
+
+      // Update High-Velocity Bullets
+      bullets.forEach((b, bi) => {
+        b.y -= 13; // fast laser speed
+        if (b.y < -10) bullets.splice(bi, 1);
+      });
+
+      // Update Enemies
+      enemies.forEach((e, ei) => {
+        e.y += e.speed;
+
+        if (e.x < ship.x + ship.w && e.x + e.w > ship.x && e.y < ship.y + ship.h && e.y + e.h > ship.y) {
+          cancelAnimationFrame(spaceAnimationId);
+          showToast(`Game Over! Score: ${spaceScore}`);
+          setTimeout(startSpaceGame, 1400);
+          return;
+        }
+
+        bullets.forEach((b, bi) => {
+          if (b.x > e.x && b.x < e.x + e.w && b.y > e.y && b.y < e.y + e.h) {
+            enemies.splice(ei, 1);
+            bullets.splice(bi, 1);
+            spaceScore += 25;
+            spaceScoreEl.textContent = spaceScore;
+          }
+        });
+
+        if (e.y > spaceCanvas.height) enemies.splice(ei, 1);
+      });
+
+      spaceCtx.fillStyle = "#050811";
+      spaceCtx.fillRect(0, 0, spaceCanvas.width, spaceCanvas.height);
+
+      // Ship with thrust glow
+      spaceCtx.fillStyle = "#6366f1";
+      spaceCtx.beginPath();
+      spaceCtx.moveTo(ship.x + 10, ship.y);
+      spaceCtx.lineTo(ship.x, ship.y + 20);
+      spaceCtx.lineTo(ship.x + 20, ship.y + 20);
+      spaceCtx.closePath();
+      spaceCtx.fill();
+
+      // Lasers
+      spaceCtx.fillStyle = "#38bdf8";
+      bullets.forEach(b => spaceCtx.fillRect(b.x - 2, b.y, 4, 12));
+
+      // Enemies
+      spaceCtx.fillStyle = "#f43f5e";
+      enemies.forEach(e => spaceCtx.fillRect(e.x, e.y, e.w, e.h));
+
+      if (activeGame === "space") {
+        spaceAnimationId = requestAnimationFrame(updateSpaceGame);
+      }
+    }
+
+    // --- 3. Coffee Tetris ---
+    let tetrisClickCount = 0;
+    let tetrisInterval = null;
+    const eggTetrisTrigger = document.getElementById("eggTetrisTrigger");
+    const coffeeModalContent = document.getElementById("coffeeModalContent");
+    const tetrisGameView = document.getElementById("tetrisGameView");
+    const tetrisCanvas = document.getElementById("tetrisCanvas");
+    const tetrisCtx = tetrisCanvas.getContext("2d");
+    const tetrisScoreEl = document.getElementById("tetrisScore");
+    const exitTetrisBtn = document.getElementById("exitTetrisBtn");
+
+    function resetTetrisView() {
+      tetrisClickCount = 0;
+      coffeeModalContent.style.display = "block";
+      tetrisGameView.style.display = "none";
+      stopAllArcadeGames();
+    }
+
+    eggTetrisTrigger.addEventListener("click", () => {
+      tetrisClickCount++;
+      if (tetrisClickCount >= 3) {
+        showToast("☕ Secret Coffee Tetris Unlocked!");
+        coffeeModalContent.style.display = "none";
+        tetrisGameView.style.display = "flex";
+        startTetrisGame();
+      }
+    });
+
+    exitTetrisBtn.addEventListener("click", resetTetrisView);
+
+    const COLS = 10, ROWS = 16, BLOCK_SIZE = 20;
+    let board = [], currentPiece = null, tetrisScore = 0;
+
+    const SHAPES = [
+      [[1, 1, 1, 1]], // I
+      [[1, 1], [1, 1]], // O
+      [[0, 1, 0], [1, 1, 1]], // T
+      [[1, 0, 0], [1, 1, 1]], // L
+      [[0, 0, 1], [1, 1, 1]], // J
+      [[0, 1, 1], [1, 1, 0]], // S
+      [[1, 1, 0], [0, 1, 1]]  // Z
+    ];
+
+    const COLORS = ["#38bdf8", "#fbbf24", "#3b82f6", "#f97316", "#3b82f6", "#22c55e", "#ef4444"];
+
+    function startTetrisGame() {
+      stopAllArcadeGames();
+      activeGame = "tetris";
+      board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+      tetrisScore = 0;
+      tetrisScoreEl.textContent = tetrisScore;
+      spawnTetrisPiece();
+      tetrisInterval = setInterval(updateTetrisGame, 480);
+      drawTetrisBoard();
+    }
+
+    function spawnTetrisPiece() {
+      const idx = Math.floor(Math.random() * SHAPES.length);
+      currentPiece = {
+        shape: SHAPES[idx],
+        color: COLORS[idx],
+        x: Math.floor(COLS / 2) - Math.ceil(SHAPES[idx][0].length / 2),
+        y: 0
+      };
+      if (isTetrisCollision(currentPiece.x, currentPiece.y, currentPiece.shape)) {
+        clearInterval(tetrisInterval);
+        showToast(`Game Over! Cleared: ${tetrisScore} lines`);
+        setTimeout(startTetrisGame, 1400);
+      }
+    }
+
+    function isTetrisCollision(x, y, shape) {
+      for (let r = 0; r < shape.length; r++) {
+        for (let c = 0; c < shape[r].length; c++) {
+          if (shape[r][c]) {
+            const newX = x + c;
+            const newY = y + r;
+            if (newX < 0 || newX >= COLS || newY >= ROWS) return true;
+            if (newY >= 0 && board[newY][newX]) return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    function rotateTetris(shape) {
+      return shape[0].map((_, i) => shape.map(row => row[i]).reverse());
+    }
+
+    function updateTetrisGame() {
+      if (!currentPiece) return;
+      if (!isTetrisCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+        currentPiece.y++;
+      } else {
+        currentPiece.shape.forEach((row, r) => {
+          row.forEach((val, c) => {
+            if (val && currentPiece.y + r >= 0) {
+              board[currentPiece.y + r][currentPiece.x + c] = currentPiece.color;
+            }
+          });
+        });
+
+        for (let r = ROWS - 1; r >= 0; r--) {
+          if (board[r].every(cell => cell !== 0)) {
+            board.splice(r, 1);
+            board.unshift(Array(COLS).fill(0));
+            tetrisScore++;
+            tetrisScoreEl.textContent = tetrisScore;
+            r++;
+          }
+        }
+        spawnTetrisPiece();
+      }
+      drawTetrisBoard();
+    }
+
+    function drawTetrisBoard() {
+      tetrisCtx.fillStyle = "#050811";
+      tetrisCtx.fillRect(0, 0, tetrisCanvas.width, tetrisCanvas.height);
+
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (board[r][c]) {
+            tetrisCtx.fillStyle = board[r][c];
+            tetrisCtx.fillRect(c * BLOCK_SIZE + 1, r * BLOCK_SIZE + 1, BLOCK_SIZE - 2, BLOCK_SIZE - 2);
+          }
+        }
+      }
+
+      if (currentPiece) {
+        tetrisCtx.fillStyle = currentPiece.color;
+        currentPiece.shape.forEach((row, r) => {
+          row.forEach((val, c) => {
+            if (val) {
+              tetrisCtx.fillRect(
+                (currentPiece.x + c) * BLOCK_SIZE + 1,
+                (currentPiece.y + r) * BLOCK_SIZE + 1,
+                BLOCK_SIZE - 2,
+                BLOCK_SIZE - 2
+              );
+            }
+          });
+        });
+      }
+    }
+
+    // --- Shared Game Boy / Touch Controls ---
+    let snakePaused = false;
+
+    function snakeSetDirection(action) {
+      if (action === "up" && snakeDy === 0) { snakeDx = 0; snakeDy = -15; }
+      else if (action === "down" && snakeDy === 0) { snakeDx = 0; snakeDy = 15; }
+      else if (action === "left" && snakeDx === 0) { snakeDx = -15; snakeDy = 0; }
+      else if (action === "right" && snakeDx === 0) { snakeDx = 15; snakeDy = 0; }
+    }
+
+    function spaceShoot() {
+      if (activeGame === "space") bullets.push({ x: ship.x + 10, y: ship.y });
+    }
+
+    function hardDropTetris() {
+      if (activeGame !== "tetris" || !currentPiece) return;
+      while (!isTetrisCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) {
+        currentPiece.y++;
+      }
+      updateTetrisGame();
+    }
+
+    function handleGameAction(action) {
+      if (!activeGame) return;
+
+      if (activeGame === "snake") {
+        if (["up", "down", "left", "right"].includes(action)) {
+          if (!snakePaused) snakeSetDirection(action);
+        } else if (action === "a" || action === "pause") {
+          snakePaused = !snakePaused;
+          showToast(snakePaused ? "⏸ Snake Paused" : "▶ Snake Resumed");
+        } else if (action === "b") {
+          startSnakeGame();
+        }
+      } else if (activeGame === "space") {
+        if (action === "left") ship.x = Math.max(0, ship.x - ship.speed);
+        else if (action === "right") ship.x = Math.min(spaceCanvas.width - ship.w, ship.x + ship.speed);
+        else if (action === "up") ship.y = Math.max(0, ship.y - ship.speed);
+        else if (action === "down") ship.y = Math.min(spaceCanvas.height - ship.h, ship.y + ship.speed);
+        else if (action === "a") spaceShoot();
+        else if (action === "b") startSpaceGame();
+      } else if (activeGame === "tetris") {
+        if (!currentPiece) return;
+        if (action === "left") {
+          if (!isTetrisCollision(currentPiece.x - 1, currentPiece.y, currentPiece.shape)) currentPiece.x--;
+        } else if (action === "right") {
+          if (!isTetrisCollision(currentPiece.x + 1, currentPiece.y, currentPiece.shape)) currentPiece.x++;
+        } else if (action === "up" || action === "a") {
+          const rotated = rotateTetris(currentPiece.shape);
+          if (!isTetrisCollision(currentPiece.x, currentPiece.y, rotated)) currentPiece.shape = rotated;
+        } else if (action === "down") {
+          if (!isTetrisCollision(currentPiece.x, currentPiece.y + 1, currentPiece.shape)) currentPiece.y++;
+        } else if (action === "b") {
+          hardDropTetris();
+          return;
+        }
+        drawTetrisBoard();
+      }
+    }
+
+    document.querySelectorAll("[data-game-action]").forEach((control) => {
+      const action = control.dataset.gameAction;
+      const press = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (control.classList.contains("gameboy-center") && action === "pause") return;
+        control.classList.add("pressed");
+        handleGameAction(action);
+      };
+      const release = () => {
+        control.classList.remove("pressed");
+        // Remove the mobile browser's retained focus highlight after touch.
+        if (document.activeElement === control) control.blur();
+      };
+      control.addEventListener("pointerdown", press, { passive: false });
+      control.addEventListener("pointerup", release);
+      control.addEventListener("pointercancel", release);
+      control.addEventListener("pointerleave", release);
+    });
+
+    // --- Exclusively Scoped Key Listener ---
+    window.addEventListener("keydown", (e) => {
+      if (!activeGame) return;
+
+      const k = e.key.toLowerCase();
+      const gameKeys = ["arrowup", "arrowdown", "arrowleft", "arrowright", "w", "a", "s", "d", "enter", " ", "space"
+      // 68. IMAGE EDITING & TRANSFORMATION (1742-1992)
+      [1742, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-edit [image , Instruction]", "Edits an uploaded image according to the requested instructions.", "/image-edit [image , remove the background and improve lighting]"],
+      [1743, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-enhance [image]", "Enhances overall image quality while preserving the original appearance.", "/photo-enhance [image]"],
+      [1744, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-enhance [image , Instruction]", "Improves an uploaded image according to specific enhancement instructions.", "/image-enhance [image , make it sharper and clearer]"],
+      [1745, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-upscale [image]", "Upscales an image while attempting to preserve important details.", "/image-upscale [image]"],
+      [1746, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-restore [image]", "Restores an old, damaged, faded, or degraded image.", "/image-restore [image]"],
+      [1747, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-restore [image]", "Repairs an old photograph while preserving its original character.", "/photo-restore [image]"],
+      [1748, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-cleanup [image , Instruction]", "Removes unwanted visual distractions from a photograph.", "/photo-cleanup [image , remove the scratches and dust]"],
+      [1749, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-repair [image , Instruction]", "Repairs visible defects or damaged areas in an image.", "/image-repair [image , repair the damaged corner]"],
+      [1750, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-sharpen [image]", "Improves apparent sharpness and definition.", "/photo-sharpen [image]"],
+      [1751, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-denoise [image]", "Reduces digital noise while preserving important details.", "/photo-denoise [image]"],
+      [1752, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-deblur [image]", "Attempts to reduce blur and improve image clarity.", "/photo-deblur [image]"],
+      [1753, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/image-color-correct [image]", "Corrects color balance and improves natural-looking tones.", "/image-color-correct [image]"],
+      [1754, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-exposure [image , Instruction]", "Corrects exposure while preserving natural details.", "/photo-exposure [image , brighten the dark areas]"],
+      [1755, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-white-balance [image]", "Corrects white balance and color temperature.", "/photo-white-balance [image]"],
+      [1756, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-contrast [image , Instruction]", "Adjusts contrast according to the requested look.", "/photo-contrast [image , increase contrast slightly]"],
+      [1757, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-saturation [image , Instruction]", "Adjusts color saturation while maintaining a natural appearance.", "/photo-saturation [image , make colors more vibrant]"],
+      [1758, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-tone [image , Instruction]", "Changes the overall tonal character of the image.", "/photo-tone [image , create a warm cinematic tone]"],
+      [1759, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-lighting [image , Instruction]", "Modifies the lighting appearance of an uploaded photograph.", "/photo-lighting [image , add soft studio lighting]"],
+      [1760, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-shadow [image , Instruction]", "Adjusts or modifies shadows in the image.", "/photo-shadow [image , soften harsh shadows]"],
+      [1761, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photo-highlight [image , Instruction]", "Adjusts highlights while preserving image detail.", "/photo-highlight [image , recover bright highlights]"],
+      [1762, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/remove-background [image]", "Removes the background while preserving the main subject.", "/remove-background [image]"],
+      [1763, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/transparent-background [image]", "Removes the background and creates a transparent result.", "/transparent-background [image]"],
+      [1764, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-replace [image , Instruction]", "Replaces the existing background with a specified environment.", "/background-replace [image , replace background with a modern office]"],
+      [1765, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-change [image , Instruction]", "Changes the background according to the requested setting.", "/background-change [image , beach sunset]"],
+      [1766, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-blur [image , Instruction]", "Blurs or modifies the background while keeping the subject clear.", "/background-blur [image , strong portrait blur]"],
+      [1767, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-clean [image]", "Cleans unwanted objects and distractions from the background.", "/background-clean [image]"],
+      [1768, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-remove-object [image , Instruction]", "Removes specified background objects.", "/background-remove-object [image , remove the people behind me]"],
+      [1769, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-expand [image , Instruction]", "Extends the image beyond its original boundaries.", "/background-expand [image , extend the background naturally]"],
+      [1770, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-extend [image , Instruction]", "Expands the canvas while generating a consistent continuation.", "/background-extend [image , extend to 16:9]"],
+      [1771, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-recreate [image , Instruction]", "Recreates or replaces the background while preserving the subject.", "/background-recreate [image , luxury studio background]"],
+      [1772, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-replace-product [image , Instruction]", "Replaces a product's background with a commercial setting.", "/background-replace-product [image , clean white studio]"],
+      [1773, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BACKGROUND EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/background-remove-product [image]", "Removes the background from a product photograph.", "/background-remove-product [image]"],
+      [1774, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-remove [image , Instruction]", "Removes a specified object and reconstructs the surrounding area.", "/object-remove [image , remove the chair]"],
+      [1775, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/person-remove [image , Instruction]", "Removes specified people from a photograph.", "/person-remove [image , remove everyone standing behind the subject]"],
+      [1776, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/person-add [image , Instruction]", "Adds a requested person or visual element while matching the scene.", "/person-add [image , add a person standing beside him]"],
+      [1777, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-add [image , Instruction]", "Adds a specified object into an existing image.", "/object-add [image , add a laptop on the table]"],
+      [1778, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-replace [image , Instruction]", "Replaces a specified object with another object.", "/object-replace [image , replace the phone with a tablet]"],
+      [1779, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-change [image , Instruction]", "Changes a selected object according to the instruction.", "/object-change [image , change the chair to black]"],
+      [1780, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-color [image , Instruction]", "Changes the color of a selected object.", "/object-color [image , make the car metallic blue]"],
+      [1781, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-material [image , Instruction]", "Changes the apparent material or finish of an object.", "/object-material [image , make the surface glossy]"],
+      [1782, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-size [image , Instruction]", "Adjusts the apparent size of a specified object.", "/object-size [image , make the logo smaller]"],
+      [1783, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SUBJECT EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/object-position [image , Instruction]", "Repositions an object while maintaining scene consistency.", "/object-position [image , move the table to the left]"],
+      [1784, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-enhance [image]", "Enhances a portrait while preserving the person's identity and natural appearance.", "/portrait-enhance [image]"],
+      [1785, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-retouch [image , Instruction]", "Performs controlled portrait retouching.", "/portrait-retouch [image , remove minor blemishes]"],
+      [1786, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-lighting [image , Instruction]", "Creates or modifies portrait lighting.", "/portrait-lighting [image , professional studio lighting]"],
+      [1787, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-background [image , Instruction]", "Changes the portrait background while preserving the subject.", "/portrait-background [image , professional gray studio]"],
+      [1788, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-colorgrade [image , Instruction]", "Applies a specified color grade to a portrait.", "/portrait-colorgrade [image , cinematic warm tone]"],
+      [1789, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-clothing [image , Instruction]", "Changes clothing while preserving the person's pose and identity.", "/portrait-clothing [image , change shirt to a formal suit]"],
+      [1790, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-outfit [image , Instruction]", "Replaces or modifies an outfit according to instructions.", "/portrait-outfit [image , business formal outfit]"],
+      [1791, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-hair [image , Instruction]", "Changes hairstyle or hair appearance.", "/portrait-hair [image , short professional hairstyle]"],
+      [1792, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-glasses [image , Instruction]", "Adds, removes, or changes glasses.", "/portrait-glasses [image , add black rectangular glasses]"],
+      [1793, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-accessory [image , Instruction]", "Adds or modifies specified accessories.", "/portrait-accessory [image , add a watch]"],
+      [1794, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-expression [image , Instruction]", "Modifies facial expression while attempting to preserve identity.", "/portrait-expression [image , natural smile]"],
+      [1795, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-age [image , Instruction]", "Creates an age-transformed version of the subject.", "/portrait-age [image , make the subject look older]"],
+      [1796, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-professional [image]", "Converts a portrait into a professional profile photograph.", "/portrait-professional [image]"],
+      [1797, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-linkedin [image]", "Creates a professional LinkedIn-style portrait.", "/portrait-linkedin [image]"],
+      [1798, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-passport [image]", "Prepares a clean passport-style portrait while preserving identity.", "/portrait-passport [image]"],
+      [1799, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PORTRAIT EDITING", "PHOTOGRAPHY", "IMAGE INPUT"], "/portrait-id-photo [image]", "Creates an ID-photo-style portrait with a clean background.", "/portrait-id-photo [image]"],
+      [1800, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/clothing-change [image , Instruction]", "Changes the subject's clothing according to the instruction.", "/clothing-change [image , change to a white formal shirt]"],
+      [1801, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/shirt-change [image , Instruction]", "Replaces the shirt or top.", "/shirt-change [image , replace with a black polo shirt]"],
+      [1802, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/suit-change [image , Instruction]", "Dresses the subject in a specified suit style.", "/suit-change [image , navy business suit]"],
+      [1803, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/uniform-change [image , Instruction]", "Changes clothing into a specified uniform.", "/uniform-change [image , medical student uniform]"],
+      [1804, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/fashion-edit [image , Instruction]", "Applies a specified fashion transformation.", "/fashion-edit [image , luxury streetwear]"],
+      [1805, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/outfit-color [image , Instruction]", "Changes clothing colors.", "/outfit-color [image , change outfit to dark green]"],
+      [1806, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/outfit-style [image , Instruction]", "Changes the overall outfit style.", "/outfit-style [image , smart casual]"],
+      [1807, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/clothing-clean [image]", "Improves the appearance and presentation of clothing.", "/clothing-clean [image]"],
+      [1808, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "CLOTHING & FASHION", "PHOTOGRAPHY", "IMAGE INPUT"], "/clothing-detail [image , Instruction]", "Enhances or modifies clothing details.", "/clothing-detail [image , add subtle fabric texture]"],
+      [1809, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-edit [image , Instruction]", "Edits a product image according to commercial requirements.", "/product-edit [image , make the product background white]"],
+      [1810, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-background [image , Instruction]", "Creates a professional background for a product.", "/product-background [image , luxury studio]"],
+      [1811, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-cleanup [image]", "Removes visual distractions from a product photograph.", "/product-cleanup [image]"],
+      [1812, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-shadow [image , Instruction]", "Adds or modifies realistic product shadows.", "/product-shadow [image , soft studio shadow]"],
+      [1813, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-reflection [image , Instruction]", "Adds a controlled commercial reflection.", "/product-reflection [image , subtle reflection beneath product]"],
+      [1814, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-lighting [image , Instruction]", "Creates professional product lighting.", "/product-lighting [image , premium studio lighting]"],
+      [1815, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-packshot [image]", "Creates a clean commercial packshot presentation.", "/product-packshot [image]"],
+      [1816, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-ad [image , Instruction]", "Turns a product image into an advertising composition.", "/product-ad [image , luxury perfume advertisement]"],
+      [1817, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-banner [image , Instruction]", "Creates a promotional banner around the uploaded product.", "/product-banner [image , create a website sale banner]"],
+      [1818, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-poster [image , Instruction]", "Creates a promotional poster using the uploaded product.", "/product-poster [image , premium launch poster]"],
+      [1819, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-social [image , Instruction]", "Creates a social-media-ready product composition.", "/product-social [image , Instagram product advertisement]"],
+      [1820, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-catalog [image]", "Creates a clean catalog-style product image.", "/product-catalog [image]"],
+      [1821, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-marketplace [image]", "Creates a marketplace-ready product presentation.", "/product-marketplace [image]"],
+      [1822, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-hero [image , Instruction]", "Creates a high-impact hero image for a product.", "/product-hero [image , dramatic premium lighting]"],
+      [1823, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "PRODUCT & BRAND IMAGES", "BRANDING", "IMAGE INPUT"], "/product-lifestyle [image , Instruction]", "Places a product into a realistic lifestyle environment.", "/product-lifestyle [image , place it on a modern office desk]"],
+      [1824, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-clean", "Cleans and improves a logo while preserving its original design.", "/logo-clean [logo]"],
+      [1825, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-enhance", "Enhances logo clarity and edges.", "/logo-enhance [logo]"],
+      [1826, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-transparent", "Creates a transparent-background version of a logo.", "/logo-transparent [logo]"],
+      [1827, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-vector-style", "Recreates the logo with clean vector-like geometry.", "/logo-vector-style [logo]"],
+      [1828, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-color [logo , Instruction]", "Changes logo colors according to the instruction.", "/logo-color [logo , change the logo to white]"],
+      [1829, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-monochrome", "Creates a monochrome version of a logo.", "/logo-monochrome [logo]"],
+      [1830, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-black-white", "Creates a black-and-white logo variation.", "/logo-black-white [logo]"],
+      [1831, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-metallic [logo , Instruction]", "Applies a metallic visual treatment to the logo.", "/logo-metallic [logo , silver chrome finish]"],
+      [1832, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-3d [logo , Instruction]", "Creates a three-dimensional logo presentation.", "/logo-3d [logo , glossy 3D chrome]"],
+      [1833, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-neon [logo , Instruction]", "Creates a neon-style presentation of the logo.", "/logo-neon [logo , blue neon sign]"],
+      [1834, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-mockup [logo , Instruction]", "Places a logo into a realistic brand mockup.", "/logo-mockup [logo , embossed on a business card]"],
+      [1835, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-signboard [logo , Instruction]", "Places a logo onto a realistic signboard.", "/logo-signboard [logo , storefront sign]"],
+      [1836, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-building [logo , Instruction]", "Creates a realistic building branding mockup.", "/logo-building [logo , logo on office building]"],
+      [1837, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-tshirt [logo , Instruction]", "Places a logo onto apparel.", "/logo-tshirt [logo , embroidered on black shirt]"],
+      [1838, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-packaging [logo , Instruction]", "Creates a branded packaging mockup.", "/logo-packaging [logo , premium cardboard box]"],
+      [1839, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/logo-product [logo , image]", "Places a supplied logo onto a product image.", "/logo-product [logo , image]"],
+      [1840, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/brand-mockup [logo , Instruction]", "Creates a professional branding mockup from a logo.", "/brand-mockup [logo , luxury stationery]"],
+      [1841, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "LOGO & BRANDING", "BRANDING", "LOGO INPUT"], "/brand-identity [logo , Instruction]", "Creates a visual brand presentation using the supplied logo.", "/brand-identity [logo , modern technology brand]"],
+      [1842, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/instagram-post [image , Instruction]", "Creates an Instagram-ready composition from an uploaded image.", "/instagram-post [image , premium travel post]"],
+      [1843, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/instagram-story [image , Instruction]", "Creates an Instagram Story composition.", "/instagram-story [image , promotional sale story]"],
+      [1844, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/instagram-reel-cover [image , Instruction]", "Creates an Instagram Reel cover.", "/instagram-reel-cover [image , gaming channel cover]"],
+      [1845, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/facebook-post [image , Instruction]", "Creates a Facebook-ready visual.", "/facebook-post [image , business promotion]"],
+      [1846, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/youtube-thumbnail [image , Instruction]", "Creates a YouTube thumbnail using the uploaded image.", "/youtube-thumbnail [image , make it dramatic with bold text]"],
+      [1847, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/youtube-banner [image , Instruction]", "Creates a YouTube channel banner.", "/youtube-banner [image , gaming channel banner]"],
+      [1848, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/linkedin-post [image , Instruction]", "Creates a professional LinkedIn visual.", "/linkedin-post [image , career achievement]"],
+      [1849, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/linkedin-banner [image , Instruction]", "Creates a LinkedIn banner from an uploaded image.", "/linkedin-banner [image , professional technology theme]"],
+      [1850, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/whatsapp-status [image , Instruction]", "Creates a WhatsApp Status-ready image.", "/whatsapp-status [image , anniversary design]"],
+      [1851, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/social-campaign [image , Instruction]", "Creates a social-media campaign visual from the uploaded image.", "/social-campaign [image , product launch]"],
+      [1852, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SOCIAL MEDIA EDITING", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/social-poster [image , Instruction]", "Creates a social-media promotional poster.", "/social-poster [image , restaurant promotion]"],
+      [1853, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/poster-edit [image , Instruction]", "Transforms an uploaded image into a professional poster.", "/poster-edit [image , music event poster]"],
+      [1854, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/poster-design [image , Instruction]", "Creates a polished poster composition using the supplied image.", "/poster-design [image , college event]"],
+      [1855, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/advertisement [image , Instruction]", "Turns an uploaded image into an advertisement.", "/advertisement [image , luxury product advertisement]"],
+      [1856, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/ad-banner [image , Instruction]", "Creates a digital advertising banner.", "/ad-banner [image , website sale banner]"],
+      [1857, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/promo-poster [image , Instruction]", "Creates a promotional poster from the supplied image.", "/promo-poster [image , 50% discount sale]"],
+      [1858, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/event-poster [image , Instruction]", "Creates an event poster.", "/event-poster [image , college fest]"],
+      [1859, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/business-poster [image , Instruction]", "Creates a professional business poster.", "/business-poster [image , new store opening]"],
+      [1860, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/sale-poster [image , Instruction]", "Creates a sales promotional poster.", "/sale-poster [image , Independence Day sale]"],
+      [1861, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/launch-poster [image , Instruction]", "Creates a product or brand launch poster.", "/launch-poster [image , new smartphone launch]"],
+      [1862, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "POSTER & ADVERTISEMENT", "DESIGN", "SOCIAL MEDIA", "IMAGE INPUT"], "/festival-poster [image , Instruction]", "Creates a festive promotional poster.", "/festival-poster [image , Onam promotion]"],
+      [1863, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/combine-images [image1 , image2]", "Combines two uploaded images into a coherent composition.", "/combine-images [image1 , image2]"],
+      [1864, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/merge-images [image1 , image2 , Instruction]", "Merges multiple images according to the requested composition.", "/merge-images [image1 , image2 , place both people together naturally]"],
+      [1865, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/photo-collage [image1 , image2 , Instruction]", "Creates a collage from multiple uploaded images.", "/photo-collage [image1 , image2 , clean birthday collage]"],
+      [1866, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/group-photo [image1 , image2 , Instruction]", "Combines people from multiple images into one group composition.", "/group-photo [image1 , image2 , create a natural group photo]"],
+      [1867, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/person-transfer [image1 , image2]", "Transfers a subject from one image into another scene.", "/person-transfer [image1 , image2]"],
+      [1868, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/subject-transfer [image1 , image2 , Instruction]", "Places a subject from one image into another image according to instructions.", "/subject-transfer [image1 , image2 , place the person naturally into the second scene]"],
+      [1869, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/face-reference [image1 , image2 , Instruction]", "Uses a supplied reference image to guide facial appearance in another composition.", "/face-reference [image1 , image2 , preserve the person's identity]"],
+      [1870, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/outfit-transfer [image1 , image2]", "Transfers clothing appearance from one image to another subject.", "/outfit-transfer [image1 , image2]"],
+      [1871, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "IMAGE INPUT"], "/style-reference [image , Instruction]", "Uses the uploaded image as a visual style reference for an edit.", "/style-reference [image , apply this lighting style]"],
+      [1872, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "GROUP & MULTIPLE IMAGE EDITING", "MULTI-IMAGE", "MULTI INPUT"], "/composition-reference [image1 , image2]", "Uses one image as a composition reference for another.", "/composition-reference [image1 , image2]"],
+      [1873, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-cartoon [image]", "Transforms a photograph into a cartoon-style illustration.", "/photo-to-cartoon [image]"],
+      [1874, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-anime [image]", "Transforms an image into an anime-inspired illustration.", "/photo-to-anime [image]"],
+      [1875, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-sketch [image]", "Converts a photograph into a sketch-style image.", "/photo-to-sketch [image]"],
+      [1876, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-watercolor [image]", "Converts an image into a watercolor-style artwork.", "/photo-to-watercolor [image]"],
+      [1877, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-oil-painting [image]", "Converts an image into an oil-painting-style artwork.", "/photo-to-oil-painting [image]"],
+      [1878, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-pencil [image]", "Creates a pencil-drawing interpretation of the image.", "/photo-to-pencil [image]"],
+      [1879, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-comic [image]", "Creates a comic-book-style interpretation.", "/photo-to-comic [image]"],
+      [1880, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-pop-art [image]", "Converts the image into a pop-art-inspired composition.", "/photo-to-pop-art [image]"],
+      [1881, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-vintage [image]", "Applies a vintage photographic aesthetic.", "/photo-to-vintage [image]"],
+      [1882, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-film [image]", "Gives an image a cinematic film-photography appearance.", "/photo-to-film [image]"],
+      [1883, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-cinematic [image , Instruction]", "Applies a cinematic visual treatment.", "/photo-to-cinematic [image , dark cinematic lighting]"],
+      [1884, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-fantasy [image , Instruction]", "Transforms an image into a fantasy-inspired scene.", "/photo-to-fantasy [image , magical forest]"],
+      [1885, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-futuristic [image , Instruction]", "Creates a futuristic interpretation of the image.", "/photo-to-futuristic [image , futuristic city]"],
+      [1886, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-cyberpunk [image]", "Applies a cyberpunk-inspired visual transformation.", "/photo-to-cyberpunk [image]"],
+      [1887, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-minimal [image]", "Creates a minimal visual interpretation.", "/photo-to-minimal [image]"],
+      [1888, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ARTISTIC TRANSFORMATIONS", "CREATIVE", "IMAGE INPUT"], "/photo-to-luxury [image]", "Gives an image a premium luxury aesthetic.", "/photo-to-luxury [image]"],
+      [1889, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/scene-change [image , Instruction]", "Changes the environment surrounding the subject.", "/scene-change [image , put the subject in a luxury hotel]"],
+      [1890, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/location-change [image , Instruction]", "Places the subject into a different location.", "/location-change [image , Paris street]"],
+      [1891, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/indoor-to-outdoor [image , Instruction]", "Transforms an indoor scene into an outdoor environment.", "/indoor-to-outdoor [image , tropical garden]"],
+      [1892, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/outdoor-to-indoor [image , Instruction]", "Transforms an outdoor scene into an indoor environment.", "/outdoor-to-indoor [image , modern studio]"],
+      [1893, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/day-to-night [image]", "Converts a daytime scene into a nighttime version.", "/day-to-night [image]"],
+      [1894, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/night-to-day [image]", "Converts a nighttime scene into a daytime version.", "/night-to-day [image]"],
+      [1895, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/weather-change [image , Instruction]", "Changes the apparent weather conditions.", "/weather-change [image , make it a rainy evening]"],
+      [1896, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/season-change [image , Instruction]", "Changes the apparent season.", "/season-change [image , winter]"],
+      [1897, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/sky-replace [image , Instruction]", "Replaces the sky while preserving the scene.", "/sky-replace [image , dramatic sunset sky]"],
+      [1898, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/sunset-edit [image]", "Creates a sunset appearance while preserving the scene.", "/sunset-edit [image]"],
+      [1899, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/golden-hour [image]", "Gives the scene a golden-hour lighting appearance.", "/golden-hour [image]"],
+      [1900, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ENVIRONMENT & SCENE CHANGES", "PHOTO EDITING", "IMAGE INPUT"], "/night-cinematic [image]", "Converts the scene into a cinematic nighttime composition.", "/night-cinematic [image]"],
+      [1901, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/image-crop [image , Instruction]", "Crops an image according to the requested composition.", "/image-crop [image , square crop centered on subject]"],
+      [1902, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/image-resize [image , Instruction]", "Resizes an image to the requested dimensions or aspect ratio.", "/image-resize [image , 16:9]"],
+      [1903, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/aspect-ratio [image , Instruction]", "Reframes an image into the requested aspect ratio.", "/aspect-ratio [image , 9:16]"],
+      [1904, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/portrait-to-landscape [image]", "Reframes a portrait image into a landscape composition.", "/portrait-to-landscape [image]"],
+      [1905, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/landscape-to-portrait [image]", "Reframes a landscape image into a portrait composition.", "/landscape-to-portrait [image]"],
+      [1906, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/square-image [image]", "Creates a square composition suitable for social media.", "/square-image [image]"],
+      [1907, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/thumbnail-crop [image , Instruction]", "Creates a thumbnail-optimized crop.", "/thumbnail-crop [image , center the face]"],
+      [1908, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/composition-fix [image , Instruction]", "Improves framing and composition while preserving the subject.", "/composition-fix [image , place subject using rule of thirds]"],
+      [1909, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/center-subject [image]", "Reframes the image to center the primary subject.", "/center-subject [image]"],
+      [1910, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "RESIZE CROP & COMPOSITION", "PHOTO EDITING", "IMAGE INPUT"], "/expand-canvas [image , Instruction]", "Expands the canvas while generating plausible surrounding content.", "/expand-canvas [image , expand upward]"],
+      [1911, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/text-on-image [image , Instruction]", "Adds specified text to an uploaded image.", "/text-on-image [image , add \"SALE 50%\" at the top]"],
+      [1912, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/remove-text [image , Instruction]", "Removes specified visible text from an image.", "/remove-text [image , remove the watermark text]"],
+      [1913, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/replace-text [image , Instruction]", "Replaces visible text with specified text while matching the design.", "/replace-text [image , replace \"2025\" with \"2026\"]"],
+      [1914, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/poster-text [image , Instruction]", "Adds professionally arranged poster text to an image.", "/poster-text [image , add event title and date]"],
+      [1915, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "LOGO INPUT"], "/logo-text [logo , Instruction]", "Creates or modifies text associated with a supplied logo.", "/logo-text [logo , add \"Technologies\"]"],
+      [1916, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/sign-text [image , Instruction]", "Changes readable text on a sign within an image.", "/sign-text [image , change store name]"],
+      [1917, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/menu-edit [image , Instruction]", "Edits text and layout within a menu image.", "/menu-edit [image , change the price]"],
+      [1918, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/certificate-edit [image , Instruction]", "Creates permitted design/layout edits to a certificate image.", "/certificate-edit [image , improve layout]"],
+      [1919, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/document-clean [image]", "Cleans a photographed document while preserving its content.", "/document-clean [image]"],
+      [1920, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "TEXT & IMAGE", "TEXT EDITING", "IMAGE INPUT"], "/document-enhance [image]", "Improves readability of a photographed document.", "/document-enhance [image]"],
+      [1921, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/study-image [image , Instruction]", "Converts an uploaded image into a cleaner educational study visual.", "/study-image [image , highlight the important structures]"],
+      [1922, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/diagram-clean [image]", "Cleans and improves a photographed educational diagram.", "/diagram-clean [image]"],
+      [1923, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/diagram-label [image , Instruction]", "Adds requested labels to an educational diagram.", "/diagram-label [image , label all cranial nerves]"],
+      [1924, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/diagram-unlabel [image]", "Removes labels to create a self-testing diagram.", "/diagram-unlabel [image]"],
+      [1925, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-diagram-clean [image]", "Cleans a medical diagram while preserving anatomical information.", "/medical-diagram-clean [image]"],
+      [1926, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-diagram-enhance [image]", "Improves readability and clarity of a medical diagram.", "/medical-diagram-enhance [image]"],
+      [1927, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-image-label [image , Instruction]", "Adds educational labels to a medical image.", "/medical-image-label [image , label the parts of the nephron]"],
+      [1928, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-image-highlight [image , Instruction]", "Highlights specified anatomical or pathological structures.", "/medical-image-highlight [image , highlight the mitral valve]"],
+      [1929, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-image-color [image , Instruction]", "Applies educational color coding to medical structures.", "/medical-image-color [image , color arteries red and veins blue]"],
+      [1930, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "STUDENT & EDUCATION IMAGE EDITING", "MEDICAL", "MBBS", "IMAGE INPUT"], "/medical-image-annotate [image , Instruction]", "Adds educational annotations to a medical image.", "/medical-image-annotate [image , mark the important structures]"],
+      [1931, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BEFORE & AFTER", "PHOTO EDITING", "IMAGE INPUT"], "/before-after [image , Instruction]", "Creates a clear before-and-after comparison based on the requested modification.", "/before-after [image , show original vs enhanced]"],
+      [1932, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BEFORE & AFTER", "PHOTO EDITING", "IMAGE INPUT"], "/edit-preview [image , Instruction]", "Creates a visual representation of the requested edit while preserving the original subject.", "/edit-preview [image , cinematic lighting]"],
+      [1933, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BEFORE & AFTER", "PHOTO EDITING", "IMAGE INPUT"], "/compare-edit [image , Instruction]", "Shows the original and edited versions side by side.", "/compare-edit [image , remove background]"],
+      [1934, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BEFORE & AFTER", "PHOTO EDITING", "IMAGE INPUT"], "/version-variations [image , Instruction]", "Creates multiple visual variations based on the same uploaded image.", "/version-variations [image , create three background options]"],
+      [1935, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/preserve-face [image , Instruction]", "Performs an image edit while prioritizing preservation of the subject's facial identity.", "/preserve-face [image , change the background to a studio]"],
+      [1936, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/preserve-identity [image , Instruction]", "Performs an edit while preserving the subject's recognizable identity.", "/preserve-identity [image , change clothing]"],
+      [1937, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/preserve-pose [image , Instruction]", "Performs an edit while maintaining the original pose.", "/preserve-pose [image , change the background]"],
+      [1938, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/preserve-composition [image , Instruction]", "Edits specified elements while preserving the original composition.", "/preserve-composition [image , change only the shirt]"],
+      [1939, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/preserve-lighting [image , Instruction]", "Performs an edit while maintaining the existing lighting direction and character.", "/preserve-lighting [image , replace the background]"],
+      [1940, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/realistic-edit [image , Instruction]", "Creates a realistic image edit that integrates the requested changes naturally.", "/realistic-edit [image , add a coffee cup]"],
+      [1941, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/natural-edit [image , Instruction]", "Applies subtle, natural-looking modifications.", "/natural-edit [image , remove minor blemishes]"],
+      [1942, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/seamless-edit [image , Instruction]", "Integrates an edit seamlessly into the original image.", "/seamless-edit [image , remove the person in the background]"],
+      [1943, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/photorealistic-edit [image , Instruction]", "Creates a photorealistic version of the requested edit.", "/photorealistic-edit [image , replace the wall]"],
+      [1944, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/professional-edit [image , Instruction]", "Applies professional photo-editing principles to the requested change.", "/professional-edit [image , improve lighting and composition]"],
+      [1945, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/studio-edit [image , Instruction]", "Gives an image a controlled professional studio appearance.", "/studio-edit [image , premium product lighting]"],
+      [1946, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "ADVANCED IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/commercial-edit [image , Instruction]", "Optimizes an image for commercial presentation.", "/commercial-edit [image , luxury product advertisement]"],
+      [1947, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "MULTI INPUT"], "/product-on-model [image1 , image2 , Instruction]", "Places a product from one image naturally onto a model from another image.", "/product-on-model [image1 , image2 , place the watch naturally on the model]"],
+      [1948, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "MULTI INPUT"], "/product-in-hand [image1 , image2 , Instruction]", "Places a product into a person's hand while matching perspective and lighting.", "/product-in-hand [image1 , image2 , place the phone in the person's hand]"],
+      [1949, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "IMAGE INPUT"], "/product-on-desk [image , Instruction]", "Places the supplied product into a realistic desk environment.", "/product-on-desk [image , modern gaming desk]"],
+      [1950, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "IMAGE INPUT"], "/product-on-shelf [image , Instruction]", "Places a product into a realistic shelf display.", "/product-on-shelf [image , premium retail shelf]"],
+      [1951, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "IMAGE INPUT"], "/product-billboard [image , Instruction]", "Creates a billboard advertisement using the supplied product image.", "/product-billboard [image , city billboard advertisement]"],
+      [1952, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "IMAGE INPUT"], "/product-storefront [image , Instruction]", "Creates a storefront branding visualization.", "/product-storefront [image , premium electronics store]"],
+      [1953, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "LOGO INPUT"], "/product-bag [logo , Instruction]", "Places a supplied logo onto realistic shopping-bag packaging.", "/product-bag [logo , luxury paper bag]"],
+      [1954, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "LOGO INPUT"], "/product-box [logo , Instruction]", "Creates branded product-box packaging using a supplied logo.", "/product-box [logo , premium black packaging]"],
+      [1955, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "LOGO INPUT"], "/brand-wall [logo , Instruction]", "Creates a branded office or event wall using the supplied logo.", "/brand-wall [logo , modern office reception]"],
+      [1956, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "BRAND & PRODUCT COMPOSITES", "BRANDING", "LOGO INPUT"], "/brand-merchandise [logo , Instruction]", "Creates branded merchandise mockups.", "/brand-merchandise [logo , branded hoodie and cap]"],
+      [1957, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "MULTI INPUT"], "/image-composite [image1 , image2 , Instruction]", "Creates a coherent composite from multiple images.", "/image-composite [image1 , image2 , combine both scenes naturally]"],
+      [1958, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-reference [image , Instruction]", "Uses the uploaded image as a reference while following the requested transformation.", "/image-reference [image , recreate this composition as a professional advertisement]"],
+      [1959, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "MULTI INPUT"], "/two-image-edit [image1 , image2 , Instruction]", "Uses two uploaded images as references for a single edit.", "/two-image-edit [image1 , image2 , use the background from image2]"],
+      [1960, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "MULTI INPUT"], "/multi-image-edit [image1 , image2 , image3 , Instruction]", "Uses multiple uploaded images to create one coherent composition.", "/multi-image-edit [image1 , image2 , image3 , create a professional collage]"],
+      [1961, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/reference-and-edit [image , Instruction]", "Uses the supplied image as the source and applies the requested transformation.", "/reference-and-edit [image , convert this into a professional advertisement]"],
+      [1962, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-poster [image , Instruction]", "Converts an uploaded image into a complete poster design.", "/image-to-poster [image , medical awareness poster]"],
+      [1963, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-ad [image , Instruction]", "Converts an uploaded image into an advertisement.", "/image-to-ad [image , premium smartphone advertisement]"],
+      [1964, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-banner [image , Instruction]", "Converts an uploaded image into a web or social-media banner.", "/image-to-banner [image , website hero banner]"],
+      [1965, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-thumbnail [image , Instruction]", "Converts an uploaded image into a high-impact thumbnail.", "/image-to-thumbnail [image , YouTube gaming thumbnail]"],
+      [1966, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-profile [image , Instruction]", "Converts an uploaded image into a professional profile image.", "/image-to-profile [image , LinkedIn profile photo]"],
+      [1967, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-product [image , Instruction]", "Converts a casual product photograph into a professional product presentation.", "/image-to-product [image , e-commerce product image]"],
+      [1968, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-catalog [image , Instruction]", "Converts a product image into a catalog-ready presentation.", "/image-to-catalog [image , clean white background]"],
+      [1969, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "SPECIAL MULTI-INPUT", "MULTI-IMAGE", "IMAGE INPUT"], "/image-to-social [image , Instruction]", "Converts an uploaded image into a social-media-ready design.", "/image-to-social [image , Instagram promotional post]"],
+      [1970, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/edit [image , Instruction]", "Performs any requested edit on the uploaded image.", "/edit [image , remove the wires]"],
+      [1971, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/fix [image , Instruction]", "Fixes a specific visual problem in an uploaded image.", "/fix [image , correct the distorted background]"],
+      [1972, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/change [image , Instruction]", "Changes a specified element while preserving the rest of the image.", "/change [image , change the sky]"],
+      [1973, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/remove [image , Instruction]", "Removes specified unwanted elements from an image.", "/remove [image , remove all people in the background]"],
+      [1974, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/add [image , Instruction]", "Adds a requested element to an image.", "/add [image , add flowers to the table]"],
+      [1975, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/replace [image , Instruction]", "Replaces a specified element with another.", "/replace [image , replace the background with a beach]"],
+      [1976, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/restore [image]", "Restores and improves a damaged or old image.", "/restore [image]"],
+      [1977, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/enhance [image]", "Improves image quality while preserving the original content.", "/enhance [image]"],
+      [1978, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/recreate [image , Instruction]", "Recreates the visual according to the requested style or composition.", "/recreate [image , recreate as a professional advertisement]"],
+      [1979, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/transform [image , Instruction]", "Transforms the uploaded image according to the specified creative direction.", "/transform [image , turn this into a cinematic poster]"],
+      [1980, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/professionalize [image , Instruction]", "Gives an image a more professional visual presentation.", "/professionalize [image , make this look like a professional product photograph]"],
+      [1981, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/cleanup [image , Instruction]", "Cleans unwanted visual elements from an image.", "/cleanup [image , remove wires and clutter]"],
+      [1982, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/retouch [image , Instruction]", "Performs targeted photographic retouching.", "/retouch [image , clean skin and improve lighting]"],
+      [1983, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/remaster [image , Instruction]", "Creates a higher-quality remastered version of an image.", "/remaster [image , improve overall quality while preserving details]"],
+      [1984, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/upgrade [image , Instruction]", "Upgrades the visual presentation while following the supplied instructions.", "/upgrade [image , make this look premium]"],
+      [1985, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/restyle [image , Instruction]", "Restyles an image while preserving the important subject matter.", "/restyle [image , luxury editorial style]"],
+      [1986, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/reframe [image , Instruction]", "Changes the framing or composition of an image.", "/reframe [image , create a vertical 9:16 composition]"],
+      [1987, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/recolor [image , Instruction]", "Recolors specified elements while preserving their structure.", "/recolor [image , make the car red]"],
+      [1988, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/relight [image , Instruction]", "Changes the lighting direction, intensity, or atmosphere.", "/relight [image , dramatic studio lighting]"],
+      [1989, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/recompose [image , Instruction]", "Reorganizes the visual composition while preserving the main subject.", "/recompose [image , place the subject on the right side]"],
+      [1990, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/modernize [image , Instruction]", "Gives an older visual a modern design treatment.", "/modernize [image , modern advertisement style]"],
+      [1991, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/minimalize [image , Instruction]", "Simplifies the visual composition while retaining the main subject.", "/minimalize [image , clean minimalist product design]"],
+      [1992, ["IMAGE EDITING & TRANSFORMATION", "IMAGE EDITING", "UNIVERSAL IMAGE EDITING", "PHOTO EDITING", "IMAGE INPUT"], "/premiumize [image , Instruction]", "Gives an image a premium commercial appearance.", "/premiumize [image , luxury brand aesthetic]"],
+];
+      if (!gameKeys.includes(k)) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (activeGame === "snake") {
+        if (k === "arrowup" || k === "w") handleGameAction("up");
+        else if (k === "arrowdown" || k === "s") handleGameAction("down");
+        else if (k === "arrowleft" || k === "a") handleGameAction("left");
+        else if (k === "arrowright" || k === "d") handleGameAction("right");
+        else if (k === "enter" || k === " " || k === "space") handleGameAction("a");
+      } else if (activeGame === "space") {
+        if (k === "arrowup" || k === "w") handleGameAction("up");
+        else if (k === "arrowdown" || k === "s") handleGameAction("down");
+        else if (k === "arrowleft" || k === "a") handleGameAction("left");
+        else if (k === "arrowright" || k === "d") handleGameAction("right");
+        else if (k === "enter" || k === " " || k === "space") handleGameAction("a");
+      } else if (activeGame === "tetris") {
+        if (k === "arrowup" || k === "w") handleGameAction("up");
+        else if (k === "arrowdown" || k === "s") handleGameAction("down");
+        else if (k === "arrowleft" || k === "a") handleGameAction("left");
+        else if (k === "arrowright" || k === "d") handleGameAction("right");
+        // Tetris keeps its original Arrow/WASD controls; Enter/Space remain intercepted only while a game is open.
+      }
+    });
+
+    function updateDirectoryStatus() {
+      const el = document.getElementById("directoryStatus");
+      if (el) el.textContent = directoryLoaded ? `✓ ${TOTAL_CODES.toLocaleString()} AI tools loaded • ${aiDirectorySource}` : `⚠ ${TOTAL_CODES} fallback AI tools loaded • ${aiDirectorySource}`;
+    }
+
+    renderCategoryChips();
+    filterAndRender();
+    updateDirectoryStatus();
+    loadAiDirectory();
+  </script>
+  <script>
+    // Footer helpers — use existing site controls where available.
+    (() => {
+      const year = document.getElementById('footerYear');
+      if (year) year.textContent = new Date().getFullYear();
+
+      const allCodes = document.getElementById('footerAllCodes');
+      if (allCodes) {
+        allCodes.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('showAllMenuBtn')?.click();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      const topLink = document.getElementById('footerTop');
+      if (topLink) {
+        topLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      const reset = document.getElementById('footerReset');
+      if (reset) reset.addEventListener('click', () => document.getElementById('resetFiltersBtn')?.click());
+
+      const about = document.getElementById('footerAbout');
+      if (about) about.addEventListener('click', () => document.getElementById('aboutSiteMenuBtn')?.click());
+
+      const contact = document.getElementById('footerContact');
+      if (contact) contact.addEventListener('click', () => document.getElementById('contactUsMenuBtn')?.click());
+
+      const coffee = document.getElementById('footerCoffee');
+      if (coffee) coffee.addEventListener('click', () => document.getElementById('buyCoffeeMenuBtn')?.click());
+
+      const aboutBottom = document.getElementById('footerAboutBottom');
+      if (aboutBottom) {
+        aboutBottom.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('aboutSiteMenuBtn')?.click();
+        });
+      }
+
+      const contactBottom = document.getElementById('footerContactBottom');
+      if (contactBottom) {
+        contactBottom.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('contactUsMenuBtn')?.click();
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    // 1000 Codes logo: smoothly return to the top.
+    (() => {
+      const logo = document.getElementById('siteLogo');
+      if (!logo) return;
+
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      };
+
+      logo.addEventListener('click', scrollToTop);
+      logo.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          scrollToTop();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
