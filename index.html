@@ -227,8 +227,9 @@
     }
 
 
-    /* --- AI Short codes navigation link --- */
-    .ai-shortcodes-link {
+
+    /* --- Animated AI Short Codes button --- */
+    .ai-short-codes-btn {
       position: relative;
       isolation: isolate;
       display: inline-flex;
@@ -236,96 +237,105 @@
       justify-content: center;
       gap: 8px;
       min-height: 44px;
-      padding: 9px 16px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
       border-radius: var(--radius-full);
       color: #f8fafc;
-      text-decoration: none;
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+      background:
+        linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+        linear-gradient(120deg, #1677ff, #00b7ff, #2563eb, #60a5fa, #1677ff) border-box;
+      background-size: 100% 100%, 300% 300%;
+      animation: aiShortCodesButtonMotion 2.8s ease-in-out infinite;
+      cursor: pointer;
+      overflow: visible;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+
+    /* No external animated ring — the entire button animates as one surface. */
+    .ai-short-codes-btn::before,
+    .ai-short-codes-btn::after {
+      content: none;
+    }
+
+    .ai-short-codes-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: saturate(1.1) brightness(1.06);
+      box-shadow: 0 0 18px rgba(37,99,235,.28), 0 0 30px rgba(0,183,255,.16);
+    }
+
+    .ai-short-codes-btn:active {
+      transform: translateY(0) scale(.97);
+    }
+
+    .ai-short-codes-btn .short-codes-icon,
+    .ai-short-codes-btn .short-codes-label {
+      position: relative;
+      z-index: 1;
+    }
+
+    .ai-short-codes-btn .short-codes-icon {
+      font-size: 15px;
+      color: #60a5fa;
+    }
+
+    .ai-short-codes-btn .short-codes-label {
       white-space: nowrap;
-      background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 52%, #4f46e5 100%);
-      border: 1px solid rgba(125, 211, 252, 0.48);
-      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.24), inset 0 1px 1px rgba(255,255,255,0.18);
-      transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+      font-weight: 800;
     }
 
-    .ai-shortcodes-link::before,
-    .ai-shortcodes-link::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: inherit;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .ai-shortcodes-link::before {
-      border: 1.5px solid rgba(56, 189, 248, 0.72);
-      animation: aiRingPulse 2.2s ease-out infinite;
-    }
-
-    .ai-shortcodes-link::after {
-      inset: -7px;
-      border: 1px solid rgba(99, 102, 241, 0.38);
-      border-top-color: rgba(125, 211, 252, 0.9);
-      border-bottom-color: rgba(59, 130, 246, 0.1);
-      animation: aiRingSpin 3.2s linear infinite;
-    }
-
-    .ai-shortcodes-link:hover {
-      transform: translateY(-2px);
-      filter: saturate(1.08) brightness(1.05);
-      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.34), inset 0 1px 1px rgba(255,255,255,0.22);
-    }
-
-    .ai-shortcodes-link:active {
-      transform: translateY(0) scale(0.97);
-    }
-
-    .ai-shortcodes-link .ai-shortcodes-spark {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #bae6fd;
-      box-shadow: 0 0 10px rgba(125, 211, 252, 0.95);
-      animation: aiSpark 1.4s ease-in-out infinite;
-      flex: 0 0 auto;
-    }
-
-    @keyframes aiRingPulse {
-      0% { opacity: 0.88; transform: scale(0.96); }
-      70% { opacity: 0; transform: scale(1.12); }
-      100% { opacity: 0; transform: scale(1.12); }
-    }
-
-    @keyframes aiRingSpin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes aiSpark {
-      0%, 100% { opacity: 0.7; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.15); }
+    @keyframes aiShortCodesButtonMotion {
+      0%, 100% {
+        background-position: 0% 50%, 0% 50%;
+        box-shadow:
+          0 6px 20px rgba(37,99,235,.20),
+          inset 0 1px 1px rgba(255,255,255,.16);
+        transform: translateY(0) scale(1);
+        filter: brightness(1) saturate(1);
+      }
+      25% {
+        background-position: 0% 50%, 35% 50%;
+        box-shadow:
+          0 8px 28px rgba(37,99,235,.32),
+          0 0 18px rgba(0,183,255,.18),
+          inset 0 1px 1px rgba(255,255,255,.22);
+        transform: translateY(-1px) scale(1.01);
+        filter: brightness(1.05) saturate(1.08);
+      }
+      50% {
+        background-position: 0% 50%, 100% 50%;
+        box-shadow:
+          0 10px 34px rgba(37,99,235,.40),
+          0 0 26px rgba(0,183,255,.24),
+          inset 0 1px 2px rgba(255,255,255,.25);
+        transform: translateY(-2px) scale(1.015);
+        filter: brightness(1.09) saturate(1.12);
+      }
+      75% {
+        background-position: 0% 50%, 65% 50%;
+        box-shadow:
+          0 8px 28px rgba(37,99,235,.30),
+          0 0 18px rgba(0,183,255,.18),
+          inset 0 1px 1px rgba(255,255,255,.20);
+        transform: translateY(-1px) scale(1.01);
+        filter: brightness(1.04) saturate(1.06);
+      }
     }
 
     @media (max-width: 640px) {
-      .header-actions { gap: 8px; }
-      .ai-shortcodes-link {
+      .ai-short-codes-btn {
         min-height: 38px;
         padding: 8px 11px;
         gap: 6px;
-        font-size: 0.72rem;
+        border-radius: 10px;
+        font-size: .72rem;
       }
-      .ai-shortcodes-link::before { inset: -3px; }
-      .ai-shortcodes-link::after { inset: -5px; }
-      .ai-shortcodes-link .ai-shortcodes-spark { width: 6px; height: 6px; }
-      .header-actions .glass-btn.btn-icon { width: 40px; height: 40px; padding: 8px; }
+      .ai-short-codes-btn .short-codes-icon { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .ai-shortcodes-link::before,
-      .ai-shortcodes-link::after,
-      .ai-shortcodes-link .ai-shortcodes-spark { animation: none; }
+      .ai-short-codes-btn {
+        animation: none !important;
+      }
     }
 
     .menu-wrapper {
@@ -1665,10 +1675,15 @@
       </div>
 
       <div class="header-actions">
-        <a class="ai-shortcodes-link" href="https://1000codes.online" aria-label="AI Short codes">
-          <span class="ai-shortcodes-spark" aria-hidden="true"></span>
-          <span>AI Short codes</span>
-        </a>
+        <button
+          class="ai-short-codes-btn"
+          type="button"
+          onclick="window.location.href='https://1000codes.online/'"
+          aria-label="Open AI Short Codes"
+        >
+          <span class="short-codes-icon" aria-hidden="true">✦</span>
+          <span class="short-codes-label">AI Short Codes</span>
+        </button>
         <div class="menu-wrapper">
           <button class="glass-btn btn-icon" id="menuToggle" aria-label="Menu">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
